@@ -13,7 +13,7 @@ public class RPG {
      //CLASSE
      int mago_hp, mago_hpmax, cavaleiro_hp, cavaleiro_hpmax, arqueiro_hp, arqueiro_hpmax;
      //OPCOES - STRING
-     String opc_class, opc_encontro, opc_status;
+     String opc_class, opc_encontro, opc_status, opc_bag_back;
      //OPCOES - INT
      int opc_fight;
      //VALORES
@@ -21,7 +21,7 @@ public class RPG {
      //...
      String nome;
      //BOOLEAN
-     Boolean stop = true, mons = true;
+     Boolean stop = true, mons = true, mons_death = true;
      //INIMIGOS
      int mons_hp, mons_hpmax, mons_ad, mons_xp, mons_nivel;
 //_______________________________________________________________
@@ -248,7 +248,7 @@ public static void choice_classe(RPG main) {
 //_______________________________________________________________                                                           
     public static void fight(RPG main) {       
 
-        while (main.mons_hp > 0) {
+        while (main.mons_death) {
             switch (main.opc_class) {             
                 case "MAGO":
                     System.out.println("\n|-----------------------------|");
@@ -348,6 +348,12 @@ public static void choice_classe(RPG main) {
             }//switch - geral
                   
             System.out.println("Voce machucou o monstro.\n"+main.mons_hp+"/"+main.mons_hpmax);
+            if (main.mons_hp > 0) {
+                main.mons_death = true;
+            }
+            else {
+                main.mons_death = false;
+            }
         
         }//while
 
@@ -358,10 +364,15 @@ public static void choice_classe(RPG main) {
     }
 //_______________________________________________________________
     public static void bag(RPG main) {
-        ArrayList<String> bag = new ArrayList<>(Arrays.asList("Pocao de vida", "Pocao de vida", "Pocao de vida"));
-        System.out.println(String.join("\n", bag));
+        ArrayList<String> bag = new ArrayList<>(Arrays.asList("\n", "Pocao de vida", "Pocao de vida", "Pocao de vida"));
+        System.out.println(String.join("\n- ", bag));
+        System.out.println("Back");
+        System.out.print("\n> ");
+        main.opc_bag_back = main.scan.next().toLowerCase();
 
-
+        if (main.opc_bag_back.equals("back")){
+            encontro(main);
+        }
 
     }
 //_______________________________________________________________
@@ -474,19 +485,19 @@ System.out.println("|----------------|");
 //MAGO
 main.mago_hpmax = 12;
 main.mago_hab1 = 6;
-main.mago_hab2 = 9;//6 * 1.5
+main.mago_hab2 = 9; (6 * 1.5)
 main.mago_hab3 = 15;
          
 //CAVALEIRO          
 main.cavaleiro_hpmax = 20;
 main.cavaleiro_hab1 = 10; 
-main.cavaleiro_hab2 = 15;//12 + 3;
+main.cavaleiro_hab2 = 15; (12 + 3)
 main.cavaleiro_hab3 = 20;
                  
 //ARQUEIRO
 main.arqueiro_hpmax = 16;
 main.arqueiro_hab1 = 9; 
-main.arqueiro_hab2 = 12;//9 + 3; 
+main.arqueiro_hab2 = 12; (9 + 3) 
 main.arqueiro_hab3 = 18;
          
    
