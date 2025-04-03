@@ -498,6 +498,4 @@ main.arqueiro_hab3 = 18;
                  L> acoes basicas
 
 
-
-    FYOKI GAY, ,uito bixa
  */
