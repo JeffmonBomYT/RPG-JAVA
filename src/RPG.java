@@ -120,37 +120,27 @@ public static void choice_classe(RPG main) {
             case "Slime":
             //vida + dano
             main.mons_nivel = main.rnd.nextInt(1, 2);
-            //Xp
-            main.mons_xp = main.mons_hpmax + main.mons_ad;
 
                 break;
             case "Esqueleto":
             //vida + dano
             main.mons_nivel = main.rnd.nextInt(2,4);
-            //Xp
-            main.mons_xp = main.mons_hpmax + main.mons_ad;
-            
+
                 break;
             case "Orc":
             //vida + dano
             main.mons_nivel = main.rnd.nextInt(4, 6);
-            //Xp
-            main.mons_xp = main.mons_hpmax + main.mons_ad;
 
                 break;
             case "Coelho assasino":
             //vida + dano
             main.mons_nivel = main.rnd.nextInt(1, 3);
-            //Xp
-            main.mons_xp = main.mons_hpmax + main.mons_ad;
 
                 break;
             case "Lobo":
             //vida + dano
             main.mons_nivel = main.rnd.nextInt(2, 5);
-            //Xp
-            main.mons_xp = main.mons_hpmax + main.mons_ad;
-            
+         
                 break;
         } 
 
@@ -207,24 +197,15 @@ public static void choice_classe(RPG main) {
                 break;
          }
          
+         main.mons_xp = main.mons_hpmax + main.mons_ad;
+
          System.out.println("Surge um monstro, o "+mons_chose+" [Nvl. "+main.mons_nivel+"]"+"\n[Vida: "+main.mons_hp+"/"+main.mons_hpmax+"]\n[Dano: "+main.mons_ad+"]\n");
          
     }     
 //_______________________________________________________________
-    public static void bag(RPG main) {
-        ArrayList<String> bag = new ArrayList<>(Arrays.asList("Pocao de vida", "Pocao de vida", "Pocao de vida"));
-        System.out.println(String.join("\n", bag));
 
-
-
-    }
 //_______________________________________________________________    
-    public static void team(RPG main) {
-        ArrayList<String> swap_team = new ArrayList<>(Arrays.asList("Pocao de vida", "Pocao de vida", "Pocao de vida"));
-         System.out.println(String.join("\n", swap_team));
-         //add aliado
-         
-    }
+
 //_______________________________________________________________    
     public static void encontro(RPG main) {
          
@@ -249,7 +230,7 @@ public static void choice_classe(RPG main) {
                     break;
                    
                  case "swap":
-                    team(main);
+                    swap(main);
                     main.mons = false;
                     break;
                    
@@ -266,6 +247,7 @@ public static void choice_classe(RPG main) {
     }
 //_______________________________________________________________                                                           
     public static void fight(RPG main) {       
+
         while (main.mons_hp > 0) {
             switch (main.opc_class) {             
                 case "MAGO":
@@ -363,7 +345,7 @@ public static void choice_classe(RPG main) {
                     break;
                 }//switch - arqueiro
         
-            }//switch 1
+            }//switch - geral
                   
             System.out.println("Voce machucou o monstro.\n"+main.mons_hp+"/"+main.mons_hpmax);
         
@@ -375,6 +357,21 @@ public static void choice_classe(RPG main) {
         
     }
 //_______________________________________________________________
+    public static void bag(RPG main) {
+        ArrayList<String> bag = new ArrayList<>(Arrays.asList("Pocao de vida", "Pocao de vida", "Pocao de vida"));
+        System.out.println(String.join("\n", bag));
+
+
+
+    }
+//_______________________________________________________________
+    public static void swap(RPG main) {
+        ArrayList<String> swap_team = new ArrayList<>(Arrays.asList(""));
+         
+         //add aliado
+         
+    }
+//_______________________________________________________________
     public static void main(String[] args) {
         RPG main = new RPG();      
 
@@ -384,7 +381,7 @@ public static void choice_classe(RPG main) {
         fight(main);
         //op(main);
          
-        System.out.println("\nSEJA BEM-VINDO AO MUNDO DE THURFEND");
+        /* System.out.println("\nSEJA BEM-VINDO AO MUNDO DE THURFEND");
         System.out.println("\nVOCE ESTÁ AMBIENTADO COM JOGOS DE TEXT-RPG? - S/N");
         System.out.print("\n> ");
         String opc_tutorial = main.scan.next().toUpperCase();
@@ -419,7 +416,9 @@ public static void choice_classe(RPG main) {
                 break;
         }
 
-          encontro(main);
+          encontro(main); */
+    
+        System.out.println("Fim");    
     }
     
 }
