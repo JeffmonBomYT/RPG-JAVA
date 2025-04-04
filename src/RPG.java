@@ -18,6 +18,8 @@ public class RPG {
      int opc_fight;
      //VALORES
      int mago_hab1, mago_hab2, mago_hab3, cavaleiro_hab1, cavaleiro_hab2, cavaleiro_hab3, arqueiro_hab1, arqueiro_hab2, arqueiro_hab3;
+     // INT - GERAL
+     int attmp_run;
      //...
      String nome;
      //BOOLEAN
@@ -129,10 +131,6 @@ public class RPG {
 
     } 
 //_______________________________________________________________
-    public static void mons_atq(RPG main) {
-
-    }
-//_______________________________________________________________
     public static void gerar_criatura(RPG main) {
                  
          String[] lista_mons = {"Slime", "Esqueleto", "Orc", "Coelho assasino", "Lobo"};
@@ -140,27 +138,22 @@ public class RPG {
 
             switch (mons_chose) {
             case "Slime":
-            //vida + dano
             main.mons_nivel = main.rnd.nextInt(1, 2);
 
                 break;
             case "Esqueleto":
-            //vida + dano
             main.mons_nivel = main.rnd.nextInt(2,4);
 
                 break;
             case "Orc":
-            //vida + dano
             main.mons_nivel = main.rnd.nextInt(4, 6);
 
                 break;
             case "Coelho assasino":
-            //vida + dano
             main.mons_nivel = main.rnd.nextInt(1, 3);
 
                 break;
             case "Lobo":
-            //vida + dano
             main.mons_nivel = main.rnd.nextInt(2, 5);
          
                 break;
@@ -168,67 +161,104 @@ public class RPG {
 
         switch (main.mons_nivel) {
             case 1:
-            main.mons_hpmax = main.rnd.nextInt(1, 6);
+            main.mons_hpmax = main.rnd.nextInt(1, 7);
             main.mons_hp = main.mons_hpmax;
-            main.mons_ad = main.rnd.nextInt(1, 4);
+            main.mons_ad = main.rnd.nextInt(1, 5);
                 break;
             case 2: 
-            main.mons_hpmax = main.rnd.nextInt(6, 10);
+            main.mons_hpmax = main.rnd.nextInt(6, 11);
             main.mons_hp = main.mons_hpmax;
-            main.mons_ad = main.rnd.nextInt(4, 9);
+            main.mons_ad = main.rnd.nextInt(4, 10);
                 break;
             case 3:
-            main.mons_hpmax = main.rnd.nextInt(10, 14);
+            main.mons_hpmax = main.rnd.nextInt(10, 15);
             main.mons_hp = main.mons_hpmax;
-            main.mons_ad = main.rnd.nextInt(9, 12);
+            main.mons_ad = main.rnd.nextInt(9, 13);
                 break;
             case 4:
-            main.mons_hpmax = main.rnd.nextInt(14, 19);
+            main.mons_hpmax = main.rnd.nextInt(14, 20);
             main.mons_hp = main.mons_hpmax;
-            main.mons_ad = main.rnd.nextInt(12, 16);
+            main.mons_ad = main.rnd.nextInt(12, 17);
                 break;
             case 5:
-            main.mons_hpmax = main.rnd.nextInt(19, 24);
+            main.mons_hpmax = main.rnd.nextInt(19, 25);
             main.mons_hp = main.mons_hpmax;
-            main.mons_ad = main.rnd.nextInt(16, 21);
+            main.mons_ad = main.rnd.nextInt(16, 22);
                 break;
             case 6:
-            main.mons_hpmax = main.rnd.nextInt(24, 29);
+            main.mons_hpmax = main.rnd.nextInt(24, 30);
             main.mons_hp = main.mons_hpmax;
-            main.mons_ad = main.rnd.nextInt(21, 28);
+            main.mons_ad = main.rnd.nextInt(21, 29);
                 break;
             case 7:
-            main.mons_hpmax = main.rnd.nextInt(29, 35);
+            main.mons_hpmax = main.rnd.nextInt(29, 36);
             main.mons_hp = main.mons_hpmax;
-            main.mons_ad = main.rnd.nextInt(28, 32);
+            main.mons_ad = main.rnd.nextInt(28, 33);
                 break;
             case 8:
-            main.mons_hpmax = main.rnd.nextInt(35, 41);
+            main.mons_hpmax = main.rnd.nextInt(35, 42);
             main.mons_hp = main.mons_hpmax;
-            main.mons_ad = main.rnd.nextInt(32, 39);
+            main.mons_ad = main.rnd.nextInt(32, 40);
                 break;
             case 9:
-            main.mons_hpmax = main.rnd.nextInt(41, 49);
+            main.mons_hpmax = main.rnd.nextInt(41, 50);
             main.mons_hp = main.mons_hpmax;
-            main.mons_ad = main.rnd.nextInt(39, 44);
+            main.mons_ad = main.rnd.nextInt(39, 45);
                 break;
             case 10:
-            main.mons_hpmax = main.rnd.nextInt(49, 55);
+            main.mons_hpmax = main.rnd.nextInt(49, 56);
             main.mons_hp = main.mons_hpmax;
-            main.mons_ad = main.rnd.nextInt(44, 48);
+            main.mons_ad = main.rnd.nextInt(44, 49);
                 break;
          }
-         
+         //Xp
          main.mons_xp = main.mons_hpmax + main.mons_ad;
 
          System.out.println("Surge um monstro, o "+mons_chose+" [Nvl. "+main.mons_nivel+"]"+"\n[Vida: "+main.mons_hp+"/"+main.mons_hpmax+"]\n[Dano: "+main.mons_ad+"]\n");
          
     }     
 //_______________________________________________________________
+    public static void mons_atq(RPG main) {
 
-//_______________________________________________________________    
+        while (main.mons_hp < main.mons_hpmax) {
+            if (main.opc_class.equals("MAGO")) {
+                main.mago_hp -= main.mons_ad;
+                System.out.println("O mosntro te atacou");
+                System.out.println(main.mago_hp+"/"+main.mago_hpmax+"\n");
+                
+                if (main.mago_hp <= 0 && main.mons_hp > 0) {
+                    main.mago_hp = 0;
+                    System.out.println("Voce foi derrotado. Eu tinha esperancas em voce, que decepcao!");
+                }
+                return;
+            }
+            else if (main.opc_class.equals("CAVALEIRO")) {
+                main.cavaleiro_hp -= main.mons_ad;
+                System.out.println("O mosntro te atacou");
+                System.out.println(main.cavaleiro_hp+"/"+main.cavaleiro_hpmax+"\n");
+                
+                if (main.cavaleiro_hp <= 0 && main.mons_hp > 0) {
+                    main.cavaleiro_hp = 0;
+                    System.out.println("Voce foi derrotado. Eu tinha esperancas em voce, que decepcao!");
+                }
+                return;
+            }
+            else if (main.opc_class.equals("ARQUEIRO")) {
+                main.arqueiro_hp -= main.mons_ad;
+                System.out.println("O mosntro te atacou");
+                System.out.println(main.arqueiro_hp+"/"+main.arqueiro_hpmax+"\n");
 
-//_______________________________________________________________    
+                if (main.arqueiro_hp <= 0 && main.mons_hp > 0) {
+                    main.arqueiro_hp = 0;
+                    System.out.println("Voce foi derrotado. Eu tinha esperancas em voce, que decepcao!");
+                }
+                return;
+            }
+        }
+
+
+    }
+//_______________________________________________________________      
     public static void encontro(RPG main) {
          
          while (main.mons) {
@@ -368,7 +398,9 @@ public class RPG {
                 }//switch - arqueiro
         
             }//switch - geral
-        
+            
+            mons_atq(main);
+
             if (main.mons_hp <= 0) {
                 main.mons_hp = 0;
             }
@@ -401,6 +433,14 @@ public class RPG {
          //add aliado
          
     }
+//_______________________________________________________________
+    public static void run(RPG main) {
+
+    }
+//_______________________________________________________________
+
+//_______________________________________________________________    
+
 //_______________________________________________________________
     public static void main(String[] args) {
         RPG main = new RPG();      
@@ -445,11 +485,11 @@ IDEIAS:
 - escolher classe 
 
 
-- gerar um monstro  
-- encontro com monstros  
+- ## gerar um monstro  
+- ## encontro com monstros  
      L> talvez batalha dupla
-     L> interface de batalha 
-     L> interface de espólio / derrota
+    ## L> interface de batalha 
+    ## L> interface de espólio / derrota
 
 - cidades
 - viajem
