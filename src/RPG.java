@@ -30,6 +30,7 @@ public class RPG {
     // INT - ARQUEIRO
     int[] Arqueiro = {/*Hp*/16,/*HPMax*/16, /*Hab1*/9, /*Hab2*/12, /*Hab3*/18};
 
+
 //_______________________________________________________________
      public static void op(RPG main) {
                          
@@ -301,7 +302,7 @@ public class RPG {
               
          }
     }
-//_______________________________________________________________                                                           
+//_______________________________________________________________         
     public static void fight(RPG main) {       
 
         while (main.mons_hp > 0) {
