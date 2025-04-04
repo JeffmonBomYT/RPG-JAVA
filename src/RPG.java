@@ -7,31 +7,31 @@ public class RPG {
 //_______________________________________________________________
 //VARIÁVEIS
      
-     Scanner scan = new Scanner(System.in);
-     Random rnd = new Random();
-     
-     //CLASSE
-     int mago_hp, mago_hpmax, cavaleiro_hp, cavaleiro_hpmax, arqueiro_hp, arqueiro_hpmax;
-     //OPCOES - STRING
-     String opc_class, opc_encontro, opc_status, opc_bag_back;
-     //OPCOES - INT
-     int opc_fight;
-     //VALORES
-     int mago_hab1, mago_hab2, mago_hab3, cavaleiro_hab1, cavaleiro_hab2, cavaleiro_hab3, arqueiro_hab1, arqueiro_hab2, arqueiro_hab3;
-     // INT - GERAL
-     int attmp_run;
-     //...
-     String nome;
-     //BOOLEAN
-     Boolean stop = true, mons = true;
-     //INIMIGOS
-     int mons_hp, mons_hpmax, mons_ad, mons_xp, mons_nivel;
+    Scanner scan = new Scanner(System.in);
+    Random rnd = new Random();
+    
+    //CLASSE
+    int mago_hp, mago_hpmax, cavaleiro_hp, cavaleiro_hpmax, arqueiro_hp, arqueiro_hpmax;
+    //OPCOES - STRING
+    String opc_class, opc_encontro, opc_status, opc_bag_back;
+    //OPCOES - INT
+    int opc_fight;
+    // INT - GERAL
+    int attmp_run;
+    //...
+    String nome;
+    //BOOLEAN
+    Boolean stop = true, mons = true;
+    //INIMIGOS
+    int mons_hp, mons_hpmax, mons_ad, mons_xp, mons_nivel;
 
-     //(test) INT - MAGO
-        int[] Mago = {};
-     //(test) INT - CAVALEIRO
+    //INT - MAGO
+    int[] Mago = {/*Hp*/12,/*HPMax*/12, /*Hab1*/6, /*Hab2*/9, /*Hab3*/15};
+    // INT - CAVALEIRO
+    int[] Cavaleiro = {/*Hp*/20,/*HPMax*/20, /*Hab1*/10, /*Hab2*/15, /*Hab3*/20};
+    // INT - ARQUEIRO
+    int[] Arqueiro = {/*Hp*/16,/*HPMax*/16, /*Hab1*/9, /*Hab2*/12, /*Hab3*/18};
 
-     //(test) INT - ARQUEIRO
 //_______________________________________________________________
      public static void op(RPG main) {
                          
@@ -99,28 +99,22 @@ public class RPG {
 
             if (main.opc_status.equals("S")) {
                 if (main.opc_class.equals("MAGO")) {
-                    main.mago_hp = 12;
-                    main.mago_hpmax = 12;
-                    main.mago_hab1 = 6;
-                    main.mago_hab2 = 9;//6 * 1.5
-                    main.mago_hab3 = 15;
-                    System.out.println("\n[Hp: "+main.mago_hp+"/"+main.mago_hpmax+"]"+"\n[Hab1: "+main.mago_hab1+"]"+"\n[Hab2: "+main.mago_hab2+"]"+"\n[Hab3: "+main.mago_hab3+"]\n");
+                    System.out.println("\n[Hp: "+main.Mago[0]+"/"+main.Mago[1]+"]"+
+                                       "\n[Hab1: "+main.Mago[2]+"]"+
+                                       "\n[Hab2: "+main.Mago[3]+"]"+
+                                       "\n[Hab3: "+main.Mago[4]+"]\n");
                 }
                 else if (main.opc_class.equals("CAVALEIRO")) {
-                    main.cavaleiro_hp = 20;
-                    main.cavaleiro_hpmax = 20;
-                    main.cavaleiro_hab1 = 10; 
-                    main.cavaleiro_hab2 = 15;//12 + 3;
-                    main.cavaleiro_hab3 = 20;
-                    System.out.println("\n[Hp: "+main.cavaleiro_hp+"/"+main.cavaleiro_hpmax+"]"+"\n[Hab1: "+main.cavaleiro_hab1+"]"+"\n[Hab2: "+main.cavaleiro_hab2+"]"+"\n[Hab3: "+main.cavaleiro_hab3+"]\n");              
+                    System.out.println("\n[Hp: "+main.Cavaleiro[0]+"/"+main.Cavaleiro[1]+"]"+
+                                       "\n[Hab1: "+main.Cavaleiro[2]+"]"+
+                                       "\n[Hab2: "+main.Cavaleiro[3]+"]"+
+                                       "\n[Hab3: "+main.Cavaleiro[4]+"]\n");
                 }
                 else if (main.opc_class.equals("ARQUEIRO")) {
-                    main.arqueiro_hp = 16;
-                    main.arqueiro_hpmax = 16;
-                    main.arqueiro_hab1 = 9; 
-                    main.arqueiro_hab2 = 12;//9 + 3; 
-                    main.arqueiro_hab3 = 18;
-                    System.out.println("\n[Hp: "+main.arqueiro_hp+"/"+main.arqueiro_hpmax+"]"+"\n[Hab1: "+main.arqueiro_hab1+"]"+"\n[Hab2: "+main.arqueiro_hab2+"]"+"\n[Hab3: "+main.arqueiro_hab3+"]\n");                
+                    System.out.println("\n[Hp: "+main.Arqueiro[0]+"/"+main.Arqueiro[1]+"]"+
+                                       "\n[Hab1: "+main.Arqueiro[2]+"]"+
+                                       "\n[Hab2: "+main.Arqueiro[3]+"]"+
+                                       "\n[Hab3: "+main.Arqueiro[4]+"]\n");
                 }
 
             }//if 
