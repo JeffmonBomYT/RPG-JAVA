@@ -26,6 +26,12 @@ public class RPG {
      Boolean stop = true, mons = true;
      //INIMIGOS
      int mons_hp, mons_hpmax, mons_ad, mons_xp, mons_nivel;
+
+     //(test) INT - MAGO
+        int[] Mago = {};
+     //(test) INT - CAVALEIRO
+
+     //(test) INT - ARQUEIRO
 //_______________________________________________________________
      public static void op(RPG main) {
                          
