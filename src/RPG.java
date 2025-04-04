@@ -212,13 +212,16 @@ public class RPG {
          //Xp
          main.mons_xp = main.mons_hpmax + main.mons_ad;
 
-         System.out.println("Surge um monstro, o "+mons_chose+" [Nvl. "+main.mons_nivel+"]"+"\n[Vida: "+main.mons_hp+"/"+main.mons_hpmax+"]\n[Dano: "+main.mons_ad+"]\n");
+         System.out.println("Surge um monstro, o "+mons_chose+
+                             " [Nvl. "+main.mons_nivel+"]"+
+                            "\n[Vida: "+main.mons_hp+"/"+main.mons_hpmax+"]"+
+                            "\n[Dano: "+main.mons_ad+"]\n");
          
     }     
 //_______________________________________________________________
     public static void mons_atq(RPG main) {
 
-        while (main.mons_hp < main.mons_hpmax) {
+        while (main.mons_hp >= 0) {
             if (main.opc_class.equals("MAGO")) {
                 main.Mago[0] -= main.mons_ad;
                 System.out.println("O mosntro te atacou");
@@ -226,7 +229,8 @@ public class RPG {
                 
                 if (main.Mago[0] <= 0 && main.mons_hp > 0) {
                     main.Mago[0] = 0;
-                    System.out.println("Voce foi derrotado. Eu tinha esperancas em voce, que decepcao!");
+                    System.out.println("Voce foi derrotado. Eu tinha esperancas em você, que decepção!");
+                    break;
                 }
                 return;
             }
@@ -237,7 +241,8 @@ public class RPG {
                 
                 if (main.Cavaleiro[0] <= 0 && main.mons_hp > 0) {
                     main.Cavaleiro[0] = 0;
-                    System.out.println("Voce foi derrotado. Eu tinha esperancas em voce, que decepcao!");
+                    System.out.println("Voce foi derrotado. Eu tinha esperancas em você, que decepção!");
+                    break;
                 }
                 return;
             }
@@ -248,7 +253,8 @@ public class RPG {
 
                 if (main.Arqueiro[0] <= 0 && main.mons_hp > 0) {
                     main.Arqueiro[0] = 0;
-                    System.out.println("Voce foi derrotado. Eu tinha esperancas em voce, que decepcao!");
+                    System.out.println("Voce foi derrotado. Eu tinha esperancas em você, que decepção!");
+                    break;
                 }
                 return;
             }
@@ -396,14 +402,14 @@ public class RPG {
                 }//switch - arqueiro
         
             }//switch - geral
-            
-            mons_atq(main);
 
             if (main.mons_hp <= 0) {
                 main.mons_hp = 0;
             }
 
-            System.out.println("Voce machucou o monstro.\n"+main.mons_hp+"/"+main.mons_hpmax);
+            System.out.println("Voce machucou o monstro.\n"+main.mons_hp+"/"+main.mons_hpmax+"\n");
+
+            mons_atq(main);
 
         }//while
 
