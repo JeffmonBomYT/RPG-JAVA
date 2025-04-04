@@ -10,8 +10,6 @@ public class RPG {
     Scanner scan = new Scanner(System.in);
     Random rnd = new Random();
     
-    //CLASSE
-    int mago_hp, mago_hpmax, cavaleiro_hp, cavaleiro_hpmax, arqueiro_hp, arqueiro_hpmax;
     //OPCOES - STRING
     String opc_class, opc_encontro, opc_status, opc_bag_back;
     //OPCOES - INT
@@ -222,34 +220,34 @@ public class RPG {
 
         while (main.mons_hp < main.mons_hpmax) {
             if (main.opc_class.equals("MAGO")) {
-                main.mago_hp -= main.mons_ad;
+                main.Mago[0] -= main.mons_ad;
                 System.out.println("O mosntro te atacou");
-                System.out.println(main.mago_hp+"/"+main.mago_hpmax+"\n");
+                System.out.println(main.Mago[0]+"/"+main.Mago[1]+"\n");
                 
-                if (main.mago_hp <= 0 && main.mons_hp > 0) {
-                    main.mago_hp = 0;
+                if (main.Mago[0] <= 0 && main.mons_hp > 0) {
+                    main.Mago[0] = 0;
                     System.out.println("Voce foi derrotado. Eu tinha esperancas em voce, que decepcao!");
                 }
                 return;
             }
             else if (main.opc_class.equals("CAVALEIRO")) {
-                main.cavaleiro_hp -= main.mons_ad;
+                main.Cavaleiro[0] -= main.mons_ad;
                 System.out.println("O mosntro te atacou");
-                System.out.println(main.cavaleiro_hp+"/"+main.cavaleiro_hpmax+"\n");
+                System.out.println(main.Cavaleiro[0]+"/"+main.Cavaleiro[1]+"\n");
                 
-                if (main.cavaleiro_hp <= 0 && main.mons_hp > 0) {
-                    main.cavaleiro_hp = 0;
+                if (main.Cavaleiro[0] <= 0 && main.mons_hp > 0) {
+                    main.Cavaleiro[0] = 0;
                     System.out.println("Voce foi derrotado. Eu tinha esperancas em voce, que decepcao!");
                 }
                 return;
             }
             else if (main.opc_class.equals("ARQUEIRO")) {
-                main.arqueiro_hp -= main.mons_ad;
+                main.Arqueiro[0] -= main.mons_ad;
                 System.out.println("O mosntro te atacou");
-                System.out.println(main.arqueiro_hp+"/"+main.arqueiro_hpmax+"\n");
+                System.out.println(main.Arqueiro[0]+"/"+main.Arqueiro[1]+"\n");
 
-                if (main.arqueiro_hp <= 0 && main.mons_hp > 0) {
-                    main.arqueiro_hp = 0;
+                if (main.Arqueiro[0] <= 0 && main.mons_hp > 0) {
+                    main.Arqueiro[0] = 0;
                     System.out.println("Voce foi derrotado. Eu tinha esperancas em voce, que decepcao!");
                 }
                 return;
@@ -500,7 +498,14 @@ IDEIAS:
     L> ao ar livre
 
 
+---------------------------------|
+<cidade inicial>
+- acampamento de guerra
+- general - guia de introducao 
+                 L> 1º combate
+                 L> acoes basicas
 
+---------------------------------|
 TIRAR TEMPORARIAMENTE:
 - por ora, tirar melle de "arqueiro"
 - escolher 1 aliado 
@@ -540,11 +545,5 @@ main.arqueiro_hab2 = 12; (9 + 3)
 main.arqueiro_hab3 = 18;
          
    
-<cidade inicial>
-- acampamento de guerra
-- general - guia de introducao 
-                 L> 1º combate
-                 L> acoes basicas
-
 
  */
