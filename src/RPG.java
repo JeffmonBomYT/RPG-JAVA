@@ -14,8 +14,6 @@ public class RPG {
     String opc_class, opc_encontro, opc_status, opc_bag_back;
     //OPCOES - INT
     int opc_fight;
-    // INT - GERAL
-    int attmp_run;
     //...
     String nome;
     //BOOLEAN
@@ -23,12 +21,7 @@ public class RPG {
     //INIMIGOS
     int mons_hp, mons_hpmax, mons_ad, mons_xp, mons_nivel;
 
-    //INT - MAGO
-    int[] Mago = {/*Hp*/12,/*HPMax*/12, /*Hab1*/6, /*Hab2*/9, /*Hab3*/15};
-    // INT - CAVALEIRO
-    int[] Cavaleiro = {/*Hp*/20,/*HPMax*/20, /*Hab1*/10, /*Hab2*/15, /*Hab3*/20};
-    // INT - ARQUEIRO
-    int[] Arqueiro = {/*Hp*/16,/*HPMax*/16, /*Hab1*/9, /*Hab2*/12, /*Hab3*/18};
+    int [] Classe;
 
 
 //_______________________________________________________________
@@ -77,13 +70,25 @@ public class RPG {
             System.out.println(" ________________________");
             System.out.println("|   ESCOLHA SUA CLASSE   |");
             System.out.println("|------------------------|");
-            System.out.println("| - Cavaleiro            |");
             System.out.println("| - Mago                 |");
+            System.out.println("| - Cavaleiro            |");
             System.out.println("| - Arqueiro             |");
             System.out.println("|________________________|");
             System.out.print("\n> ");
             main.opc_class = main.scan.next().toUpperCase();                                           
             
+            if (main.opc_class.equals("MAGO")) {
+                main.Classe = new int[] {/*Hp*/12,/*HPMax*/12, /*Hab1*/6, /*Hab2*/9, /*Hab3*/15};
+
+            }
+            else if (main.opc_class.equals("CAVALEIRO")) {
+                main.Classe = new int[] {/*Hp*/20,/*HPMax*/20, /*Hab1*/10, /*Hab2*/15, /*Hab3*/20};
+                        
+            }
+            else if (main.opc_class.equals("ARQUEIRO")) {
+                main.Classe = new int[] {/*Hp*/16,/*HPMax*/16, /*Hab1*/9, /*Hab2*/12, /*Hab3*/18};
+            }
+
             if (main.opc_class.equals("CAVALEIRO") || main.opc_class.equals("MAGO") || main.opc_class.equals("ARQUEIRO")) {
                 main.stop = false;
             }
@@ -91,32 +96,17 @@ public class RPG {
                 System.out.println("Essa classe não existe ou foi escrita incorretamente.");
             }
 
-            System.out.println("\nDesejas ver os Status de sua classe?");
+            System.out.println("\nDesejas ver os status de sua classe?");
             System.out.println("S/N");
             System.out.print("\n> ");
             main.opc_status = main.scan.next().toUpperCase();
 
             if (main.opc_status.equals("S")) {
-                if (main.opc_class.equals("MAGO")) {
-                    System.out.println("\n[Hp: "+main.Mago[0]+"/"+main.Mago[1]+"]"+
-                                       "\n[Hab1: "+main.Mago[2]+"]"+
-                                       "\n[Hab2: "+main.Mago[3]+"]"+
-                                       "\n[Hab3: "+main.Mago[4]+"]\n");
-                }
-                else if (main.opc_class.equals("CAVALEIRO")) {
-                    System.out.println("\n[Hp: "+main.Cavaleiro[0]+"/"+main.Cavaleiro[1]+"]"+
-                                       "\n[Hab1: "+main.Cavaleiro[2]+"]"+
-                                       "\n[Hab2: "+main.Cavaleiro[3]+"]"+
-                                       "\n[Hab3: "+main.Cavaleiro[4]+"]\n");
-                }
-                else if (main.opc_class.equals("ARQUEIRO")) {
-                    System.out.println("\n[Hp: "+main.Arqueiro[0]+"/"+main.Arqueiro[1]+"]"+
-                                       "\n[Hab1: "+main.Arqueiro[2]+"]"+
-                                       "\n[Hab2: "+main.Arqueiro[3]+"]"+
-                                       "\n[Hab3: "+main.Arqueiro[4]+"]\n");
-                }
-
-            }//if 
+                    System.out.println("\n[Hp: "+main.Classe[0]+"/"+main.Classe[1]+"]"+
+                                       "\n[Hab1: "+main.Classe[2]+"]"+
+                                       "\n[Hab2: "+main.Classe[3]+"]"+
+                                       "\n[Hab3: "+main.Classe[4]+"]\n");
+            }
             else if (main.opc_status.equals("N")) {
                 
             }
@@ -223,44 +213,19 @@ public class RPG {
     public static void mons_atq(RPG main) {
 
         while (main.mons_hp >= 0) {
-            if (main.opc_class.equals("MAGO")) {
-                main.Mago[0] -= main.mons_ad;
-                System.out.println("O mosntro te atacou");
-                System.out.println(main.Mago[0]+"/"+main.Mago[1]+"\n");
-                
-                if (main.Mago[0] <= 0 && main.mons_hp > 0) {
-                    main.Mago[0] = 0;
-                    System.out.println("Voce foi derrotado. Eu tinha esperancas em você, que decepção!");
-                    break;
-                }
-                return;
-            }
-            else if (main.opc_class.equals("CAVALEIRO")) {
-                main.Cavaleiro[0] -= main.mons_ad;
-                System.out.println("O mosntro te atacou");
-                System.out.println(main.Cavaleiro[0]+"/"+main.Cavaleiro[1]+"\n");
-                
-                if (main.Cavaleiro[0] <= 0 && main.mons_hp > 0) {
-                    main.Cavaleiro[0] = 0;
-                    System.out.println("Voce foi derrotado. Eu tinha esperancas em você, que decepção!");
-                    break;
-                }
-                return;
-            }
-            else if (main.opc_class.equals("ARQUEIRO")) {
-                main.Arqueiro[0] -= main.mons_ad;
-                System.out.println("O mosntro te atacou");
-                System.out.println(main.Arqueiro[0]+"/"+main.Arqueiro[1]+"\n");
 
-                if (main.Arqueiro[0] <= 0 && main.mons_hp > 0) {
-                    main.Arqueiro[0] = 0;
+                main.Classe[0] -= main.mons_ad;
+                System.out.println("O monstro te atacou");
+                System.out.println(main.Classe[0]+"/"+main.Classe[1]+"\n");
+                
+                if (main.Classe[0] <= 0 && main.mons_hp > 0) {
+                    main.Classe[0] = 0;
                     System.out.println("Voce foi derrotado. Eu tinha esperancas em você, que decepção!");
                     break;
                 }
                 return;
-            }
+
         }
-
 
     }
 //_______________________________________________________________      
@@ -318,15 +283,15 @@ public class RPG {
                 
                 switch (main.opc_fight) {                   
                     case 1:
-                        main.mons_hp -= 6;
+                        main.mons_hp -= main.Classe[2];
                     break;
                     
                     case 2:
-                        main.mons_hp -= 9;
+                        main.mons_hp -= main.Classe[3];
                     break;
                     
                     case 3:
-                        main.mons_hp -= 15;
+                        main.mons_hp -= main.Classe[4];
                     break;
                     
                     case 4:
@@ -351,15 +316,15 @@ public class RPG {
                 
                 switch (main.opc_fight) {                   
                     case 1:
-                        main.mons_hp -= 10;
+                        main.mons_hp -= main.Classe[2];
                     break;
                         
                     case 2:
-                        main.mons_hp -= 15;
+                        main.mons_hp -= main.Classe[3];
                     break;
                     
                     case 3:
-                        main.mons_hp -= 20;
+                        main.mons_hp -= main.Classe[4];
                     break;
                     
                     case 4:
@@ -383,19 +348,19 @@ public class RPG {
                 
                 switch (main.opc_fight) {                   
                     case 1:
-                        main.mons_hp -= 9;
+                        main.mons_hp -= main.Classe[2];
                     break;
                     
                     case 2:
-                        main.mons_hp -= 12;
+                        main.mons_hp -= main.Classe[3];
                     break;
                     
                     case 3:
-                        main.mons_hp -= 18;
+                        main.mons_hp -= main.Classe[4];
                     break;
                     
                     case 4:
-                        encontro(main);  
+                        encontro(main); 
                     break;
                     
                     default:
