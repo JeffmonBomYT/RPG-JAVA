@@ -39,15 +39,14 @@ public class RPG {
             String opc_tutorial = main.scan.next().toUpperCase();
     
             switch (opc_tutorial) {
-                case "N":
+                case "N" -> {
                     System.out.println("\nEm um text-rpg, voce decide acoes digitando letras ou textos no prompt quando solicitado, resultando em uma acao. ");
                     System.out.println("___________________________________");
-                    break;
+                 }
     
-                case "S":
-                    break;
-                default:
-                    System.out.println("Comando digitado incrretamente.");
+                case "S" -> {
+                 }
+                default -> System.out.println("Comando digitado incrretamente.");
             }
     
             System.out.println("\nQUAL SERÁ O NOME DO HERÓI QUE PARTICIPARÁ DE CANTIGAS DE BARDOS?");
@@ -77,16 +76,18 @@ public class RPG {
             System.out.print("\n> ");
             main.opc_class = main.scan.next().toUpperCase();                                           
             
-            if (main.opc_class.equals("MAGO")) {
-                main.Classe = new int[] {/*Hp*/12,/*HPMax*/12, /*Hab1*/6, /*Hab2*/9, /*Hab3*/15};
-
-            }
-            else if (main.opc_class.equals("CAVALEIRO")) {
-                main.Classe = new int[] {/*Hp*/20,/*HPMax*/20, /*Hab1*/10, /*Hab2*/15, /*Hab3*/20};
-                        
-            }
-            else if (main.opc_class.equals("ARQUEIRO")) {
-                main.Classe = new int[] {/*Hp*/16,/*HPMax*/16, /*Hab1*/9, /*Hab2*/12, /*Hab3*/18};
+            switch (main.opc_class) {
+                case "MAGO":
+                    main.Classe = new int[] {/*Hp*/12,/*HPMax*/12, /*Hab1*/6, /*Hab2*/9, /*Hab3*/15};
+                    break;
+                case "CAVALEIRO":
+                    main.Classe = new int[] {/*Hp*/20,/*HPMax*/20, /*Hab1*/10, /*Hab2*/15, /*Hab3*/20};
+                    break;
+                case "ARQUEIRO":
+                    main.Classe = new int[] {/*Hp*/16,/*HPMax*/16, /*Hab1*/9, /*Hab2*/12, /*Hab3*/18};
+                    break;
+                default:
+                    break;
             }
 
             if (main.opc_class.equals("CAVALEIRO") || main.opc_class.equals("MAGO") || main.opc_class.equals("ARQUEIRO")) {
@@ -101,18 +102,17 @@ public class RPG {
             System.out.print("\n> ");
             main.opc_status = main.scan.next().toUpperCase();
 
-            if (main.opc_status.equals("S")) {
-                    System.out.println("\n[Hp: "+main.Classe[0]+"/"+main.Classe[1]+"]"+
+            switch (main.opc_status) {
+                case "S" -> System.out.println("\n[Hp: "+main.Classe[0]+"/"+main.Classe[1]+"]"+
                                        "\n[Hab1: "+main.Classe[2]+"]"+
                                        "\n[Hab2: "+main.Classe[3]+"]"+
                                        "\n[Hab3: "+main.Classe[4]+"]\n");
-            }
-            else if (main.opc_status.equals("N")) {
-                
-            }
-            else {
-                System.out.println("Comando inválido");
-                main.stop = true;
+                case "N" -> {
+                }
+                default -> {
+                    System.out.println("Comando inválido");
+                    main.stop = true;
+                }
             }
         
 
@@ -126,79 +126,64 @@ public class RPG {
          String mons_chose = lista_mons[main.rnd.nextInt(lista_mons.length)];         
 
             switch (mons_chose) {
-            case "Slime":
-            main.mons_nivel = main.rnd.nextInt(1, 2);
-
-                break;
-            case "Esqueleto":
-            main.mons_nivel = main.rnd.nextInt(2,4);
-
-                break;
-            case "Orc":
-            main.mons_nivel = main.rnd.nextInt(4, 6);
-
-                break;
-            case "Coelho assasino":
-            main.mons_nivel = main.rnd.nextInt(1, 3);
-
-                break;
-            case "Lobo":
-            main.mons_nivel = main.rnd.nextInt(2, 5);
-         
-                break;
+            case "Slime" -> main.mons_nivel = main.rnd.nextInt(1, 2);
+            case "Esqueleto" -> main.mons_nivel = main.rnd.nextInt(2,4);
+            case "Orc" -> main.mons_nivel = main.rnd.nextInt(4, 6);
+            case "Coelho assasino" -> main.mons_nivel = main.rnd.nextInt(1, 3);
+            case "Lobo" -> main.mons_nivel = main.rnd.nextInt(2, 5);
         } 
 
         switch (main.mons_nivel) {
-            case 1:
-            main.mons_hpmax = main.rnd.nextInt(1, 7);
-            main.mons_hp = main.mons_hpmax;
-            main.mons_ad = main.rnd.nextInt(1, 5);
-                break;
-            case 2: 
-            main.mons_hpmax = main.rnd.nextInt(6, 11);
-            main.mons_hp = main.mons_hpmax;
-            main.mons_ad = main.rnd.nextInt(4, 10);
-                break;
-            case 3:
-            main.mons_hpmax = main.rnd.nextInt(10, 15);
-            main.mons_hp = main.mons_hpmax;
-            main.mons_ad = main.rnd.nextInt(9, 13);
-                break;
-            case 4:
-            main.mons_hpmax = main.rnd.nextInt(14, 20);
-            main.mons_hp = main.mons_hpmax;
-            main.mons_ad = main.rnd.nextInt(12, 17);
-                break;
-            case 5:
-            main.mons_hpmax = main.rnd.nextInt(19, 25);
-            main.mons_hp = main.mons_hpmax;
-            main.mons_ad = main.rnd.nextInt(16, 22);
-                break;
-            case 6:
-            main.mons_hpmax = main.rnd.nextInt(24, 30);
-            main.mons_hp = main.mons_hpmax;
-            main.mons_ad = main.rnd.nextInt(21, 29);
-                break;
-            case 7:
-            main.mons_hpmax = main.rnd.nextInt(29, 36);
-            main.mons_hp = main.mons_hpmax;
-            main.mons_ad = main.rnd.nextInt(28, 33);
-                break;
-            case 8:
-            main.mons_hpmax = main.rnd.nextInt(35, 42);
-            main.mons_hp = main.mons_hpmax;
-            main.mons_ad = main.rnd.nextInt(32, 40);
-                break;
-            case 9:
-            main.mons_hpmax = main.rnd.nextInt(41, 50);
-            main.mons_hp = main.mons_hpmax;
-            main.mons_ad = main.rnd.nextInt(39, 45);
-                break;
-            case 10:
-            main.mons_hpmax = main.rnd.nextInt(49, 56);
-            main.mons_hp = main.mons_hpmax;
-            main.mons_ad = main.rnd.nextInt(44, 49);
-                break;
+            case 1 -> {
+                main.mons_hpmax = main.rnd.nextInt(1, 7);
+                main.mons_hp = main.mons_hpmax;
+                main.mons_ad = main.rnd.nextInt(1, 5);
+            }
+            case 2 -> {
+                main.mons_hpmax = main.rnd.nextInt(6, 11);
+                main.mons_hp = main.mons_hpmax;
+                main.mons_ad = main.rnd.nextInt(4, 10);
+            }
+            case 3 -> {
+                main.mons_hpmax = main.rnd.nextInt(10, 15);
+                main.mons_hp = main.mons_hpmax;
+                main.mons_ad = main.rnd.nextInt(9, 13);
+            }
+            case 4 -> {
+                main.mons_hpmax = main.rnd.nextInt(14, 20);
+                main.mons_hp = main.mons_hpmax;
+                main.mons_ad = main.rnd.nextInt(12, 17);
+            }
+            case 5 -> {
+                main.mons_hpmax = main.rnd.nextInt(19, 25);
+                main.mons_hp = main.mons_hpmax;
+                main.mons_ad = main.rnd.nextInt(16, 22);
+            }
+            case 6 -> {
+                main.mons_hpmax = main.rnd.nextInt(24, 30);
+                main.mons_hp = main.mons_hpmax;
+                main.mons_ad = main.rnd.nextInt(21, 29);
+            }
+            case 7 -> {
+                main.mons_hpmax = main.rnd.nextInt(29, 36);
+                main.mons_hp = main.mons_hpmax;
+                main.mons_ad = main.rnd.nextInt(28, 33);
+            }
+            case 8 -> {
+                main.mons_hpmax = main.rnd.nextInt(35, 42);
+                main.mons_hp = main.mons_hpmax;
+                main.mons_ad = main.rnd.nextInt(32, 40);
+            }
+            case 9 -> {
+                main.mons_hpmax = main.rnd.nextInt(41, 50);
+                main.mons_hp = main.mons_hpmax;
+                main.mons_ad = main.rnd.nextInt(39, 45);
+            }
+            case 10 -> {
+                main.mons_hpmax = main.rnd.nextInt(49, 56);
+                main.mons_hp = main.mons_hpmax;
+                main.mons_ad = main.rnd.nextInt(44, 49);
+            }
          }
          //Xp
          main.mons_xp = main.mons_hpmax + main.mons_ad;
@@ -241,28 +226,27 @@ public class RPG {
          main.opc_encontro = main.scan.next().toLowerCase();
               
               switch (main.opc_encontro) {
-                 case "fight": 
-                    fight(main);
-                    main.mons = false;
-                    break;
+                 case "fight" -> {
+                     fight(main);
+                     main.mons = false;
+                 }
                    
-                 case "bag":
-                    bag(main);
-                    main.mons = false;
-                    break;
+                 case "bag" -> {
+                     bag(main);
+                     main.mons = false;
+                 }
                    
-                 case "swap":
-                    swap(main);
-                    main.mons = false;
-                    break;
+                 case "swap" -> {
+                     swap(main);
+                     main.mons = false;
+                 }
                    
-                 case "run":
-                    System.out.println("Sistema não implementado");
-                    main.mons = false;
-                    break;
+                 case "run" -> {
+                     System.out.println("Sistema não implementado");
+                     main.mons = false;
+                 }
                    
-                 default:
-                    System.out.println("Comando inválido. tente novamente");                   
+                 default -> System.out.println("Comando inválido. tente novamente");                   
               }//switch
               
          }
@@ -272,7 +256,7 @@ public class RPG {
 
         while (main.mons_hp > 0) {
             switch (main.opc_class) {             
-                case "MAGO":
+                case "MAGO" -> {
                     System.out.println("\n|-----------------------------|");
                     System.out.println("|1  Mag. atck     Mag. miss  2|");
                     System.out.println("|                             |");
@@ -280,32 +264,24 @@ public class RPG {
                     System.out.println("|-----------------------------|");
                     System.out.print("\n> ");
                     main.opc_fight = main.scan.nextInt();
+                    
+                    switch (main.opc_fight) {
+                        case 1 -> main.mons_hp -= main.Classe[2];
+                        
+                        case 2 -> main.mons_hp -= main.Classe[3];
+                        
+                        case 3 -> main.mons_hp -= main.Classe[4];
+                        
+                        case 4 -> encontro(main);
+                        
+                        default -> {
+                        }
+                        
+                    }// switch - mago
+                }
+
                 
-                switch (main.opc_fight) {                   
-                    case 1:
-                        main.mons_hp -= main.Classe[2];
-                    break;
-                    
-                    case 2:
-                        main.mons_hp -= main.Classe[3];
-                    break;
-                    
-                    case 3:
-                        main.mons_hp -= main.Classe[4];
-                    break;
-                    
-                    case 4:
-                        encontro(main);
-                    break;
-                    
-                    default:
-                    break;
-                    
-                }// switch - mago
-                
-                break;
-                
-                case "CAVALEIRO":
+                case "CAVALEIRO" -> {
                     System.out.println("\n|------------------------------|");
                     System.out.println("|1  Mellee atq     Str. atack 2|");
                     System.out.println("|                              |");
@@ -313,31 +289,23 @@ public class RPG {
                     System.out.println("|------------------------------|");
                     System.out.print("\n> ");
                     main.opc_fight = main.scan.nextInt();
-                
-                switch (main.opc_fight) {                   
-                    case 1:
-                        main.mons_hp -= main.Classe[2];
-                    break;
+                    
+                    switch (main.opc_fight) {
+                        case 1 -> main.mons_hp -= main.Classe[2];
                         
-                    case 2:
-                        main.mons_hp -= main.Classe[3];
-                    break;
-                    
-                    case 3:
-                        main.mons_hp -= main.Classe[4];
-                    break;
-                    
-                    case 4:
-                        encontro(main);
-                    break;
-                    
-                    default:
-                    break;
-                }// switch - guerreiro
+                        case 2 -> main.mons_hp -= main.Classe[3];
+                        
+                        case 3 -> main.mons_hp -= main.Classe[4];
+                        
+                        case 4 -> encontro(main);
+                        
+                        default -> {
+                        }
+                    }// switch - guerreiro
+                }
+
                 
-                break;
-                
-                case "ARQUEIRO":
+                case "ARQUEIRO" -> {
                     System.out.println("\n|------------------------------|");
                     System.out.println("|1  Bow shot       Pres. shot 2|");
                     System.out.println("|                              |");
@@ -345,27 +313,20 @@ public class RPG {
                     System.out.println("|------------------------------|");
                     System.out.print("\n> ");
                     main.opc_fight = main.scan.nextInt();
-                
-                switch (main.opc_fight) {                   
-                    case 1:
-                        main.mons_hp -= main.Classe[2];
-                    break;
                     
-                    case 2:
-                        main.mons_hp -= main.Classe[3];
-                    break;
-                    
-                    case 3:
-                        main.mons_hp -= main.Classe[4];
-                    break;
-                    
-                    case 4:
-                        encontro(main); 
-                    break;
-                    
-                    default:
-                    break;
-                }//switch - arqueiro
+                    switch (main.opc_fight) {
+                        case 1 -> main.mons_hp -= main.Classe[2];
+                        
+                        case 2 -> main.mons_hp -= main.Classe[3];
+                        
+                        case 3 -> main.mons_hp -= main.Classe[4];
+                        
+                        case 4 -> encontro(main);
+                        
+                        default -> {
+                        }
+                    }//switch - arqueiro
+                }
         
             }//switch - geral
 
@@ -399,7 +360,14 @@ public class RPG {
 //_______________________________________________________________
     public static void swap(RPG main) {
         ArrayList<String> swap_team = new ArrayList<>(Arrays.asList(""));
-         
+        System.out.println(String.join("\n- ", swap_team));
+        System.out.println("Back");
+        System.out.print("\n> ");
+        main.opc_bag_back = main.scan.next().toLowerCase();
+
+        if (main.opc_bag_back.equals("back")){
+            encontro(main);
+        }
          //add aliado
          
     }
