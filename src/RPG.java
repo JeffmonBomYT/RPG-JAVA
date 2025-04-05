@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class RPG { 
 //_______________________________________________________________
 //VARIÁVEIS
-     
+    Role role = new Role();
     Scanner scan = new Scanner(System.in);
     Random rnd = new Random();
     
@@ -21,7 +21,7 @@ public class RPG {
     //INIMIGOS
     int mons_hp, mons_hpmax, mons_ad, mons_xp, mons_nivel;
 
-    int [] Classe;
+    int[] Classe;
 
 
 //_______________________________________________________________

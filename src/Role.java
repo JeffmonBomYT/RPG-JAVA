@@ -1,67 +1,67 @@
 public class Role {
 
   private String name;
-  private int health;
-  private int skill1;
-  private int skill2;
-  private int skill3;
+  private int hp;
+  private int Hab1;
+  private int Hab2;
+  private int Hab3;
 
-  public Role(String name, int health, int skill1, int skill2, int skill3) {
+  public Role(String name, int hp, int Hab1, int Hab2, int Hab3) {
       this.name = name;
-      this.health = health;
-      this.skill1 = skill1;
-      this.skill2 = skill2;
-      this.skill3 = skill3;
+      this.hp = hp;
+      this.Hab1 = Hab1;
+      this.Hab2 = Hab2;
+      this.Hab3 = Hab3;
   }
 
   public void setName(String name) {
       this.name = name;
   }
 
-  public void setHealth(int health) {
-      this.health = health;
+  public void setHp(int hp) {
+      this.hp = hp;
   }
 
-  public void setSkill1(int skill1) {
-      this.skill1 = skill1;
+  public void setSkill1(int Hab1) {
+      this.Hab1 = Hab1;
   }
 
-  public void setSkill2(int skill2) {
-      this.skill2 = skill2;
+  public void setSkill2(int Hab2) {
+      this.Hab2 = Hab2;
   }
 
-  public void setSkill3(int skill3) {
-      this.skill3 = skill3;
+  public void setSkill3(int Hab3) {
+      this.Hab3 = Hab3;
   }
 
   public String getName() {
       return name;
   }
 
-  public int getHealth() {
-      return health;
+  public int getHp() {
+      return hp;
   }
 
   public int getSkill1() {
-      return skill1;
+      return Hab1;
   }
 
   public int getSkill2() {
-      return skill2;
+      return Hab2;
   }
 
   public int getSkill3() {
-      return skill3;
+      return Hab3;
   }
 
   public int getChoice(int choice) {
       switch (choice) {
           case 1:
-              return skill1;
+              return Hab1;
           case 2:
-              return skill2;
+              return Hab2;
           case 3:
-              return skill3;
+              return Hab3;
           default:
               break;
       }
