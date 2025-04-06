@@ -6,10 +6,7 @@ import java.util.Scanner;
 public class RPG { 
 //_______________________________________________________________
 //VARIÁVEIS
-    Role Mago = new Role("MAGO",/*HPMax*/12, /*Hab1*/6, /*Hab2*/9, /*Hab3*/15);
-    Role Cavaleiro = new Role("CAVALEIRO", /*HPMax*/20, /*Hab1*/10, /*Hab2*/15, /*Hab3*/20);
-    Role Arqueiro = new Role("ARQUEIRO",/*HPMax*/16, /*Hab1*/9, /*Hab2*/12, /*Hab3*/18);
-    
+
     Scanner scan = new Scanner(System.in);
     Random rnd = new Random();
     
