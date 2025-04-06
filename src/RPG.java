@@ -6,7 +6,10 @@ import java.util.Scanner;
 public class RPG { 
 //_______________________________________________________________
 //VARIÁVEIS
-    Role role = new Role();
+    Role Mago = new Role("MAGO",/*HPMax*/12, /*Hab1*/6, /*Hab2*/9, /*Hab3*/15);
+    Role Cavaleiro = new Role("CAVALEIRO", /*HPMax*/20, /*Hab1*/10, /*Hab2*/15, /*Hab3*/20);
+    Role Arqueiro = new Role("ARQUEIRO",/*HPMax*/16, /*Hab1*/9, /*Hab2*/12, /*Hab3*/18);
+    
     Scanner scan = new Scanner(System.in);
     Random rnd = new Random();
     
@@ -125,7 +128,7 @@ public class RPG {
          String[] lista_mons = {"Slime", "Esqueleto", "Orc", "Coelho assasino", "Lobo"};
          String mons_chose = lista_mons[main.rnd.nextInt(lista_mons.length)];         
 
-            switch (mons_chose) {
+        switch (mons_chose) {
             case "Slime" -> main.mons_nivel = main.rnd.nextInt(1, 2);
             case "Esqueleto" -> main.mons_nivel = main.rnd.nextInt(2,4);
             case "Orc" -> main.mons_nivel = main.rnd.nextInt(4, 6);
@@ -254,7 +257,7 @@ public class RPG {
 //_______________________________________________________________         
     public static void fight(RPG main) {       
 
-        while (main.mons_hp > 0) {
+        if (main.mons_hp > 0) {
             switch (main.opc_class) {             
                 case "MAGO" -> {
                     System.out.println("\n|-----------------------------|");
@@ -340,7 +343,7 @@ public class RPG {
 
         }//while
 
-              System.out.println("Parabens, voce derrotou o monstro. sua recompensa: \n["+main.mons_xp+"] Xp");
+            System.out.println("Parabens, voce derrotou o monstro. sua recompensa: \n["+main.mons_xp+"] Xp");
          
         
     }
