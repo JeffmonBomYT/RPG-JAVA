@@ -58,7 +58,7 @@ public class RPG {
          }
          else if (opc_op.equals("n")) {
               System.out.println("Adeus.");
-              System.exit(0);
+              System.exit(1);
          }
          
     }
@@ -274,8 +274,8 @@ public class RPG {
                         
                         case 4 -> encontro(main);
                         
-                        default -> {
-                        }
+                        default -> System.out.println("Comando digitado incrretamente.");
+                        
                         
                     }// switch - mago
                 }
@@ -299,8 +299,8 @@ public class RPG {
                         
                         case 4 -> encontro(main);
                         
-                        default -> {
-                        }
+                        default -> System.out.println("Comando digitado incrretamente.");
+                        
                     }// switch - guerreiro
                 }
 
@@ -323,8 +323,8 @@ public class RPG {
                         
                         case 4 -> encontro(main);
                         
-                        default -> {
-                        }
+                        default -> System.out.println("Comando digitado incrretamente.");
+                        
                     }//switch - arqueiro
                 }
         
