@@ -200,13 +200,18 @@ public class RPG {
         while (main.mons_hp >= 0) {
 
                 main.Classe[0] -= main.mons_ad;
-                System.out.println("O monstro te atacou");
-                System.out.println(main.Classe[0]+"/"+main.Classe[1]+"\n");
-                
+                if (main.mons_hp > 0) {
+                    System.out.println("O monstro te atacou");
+                    System.out.println(main.Classe[0]+"/"+main.Classe[1]+"\n");
+                }
+
                 if (main.Classe[0] <= 0 && main.mons_hp > 0) {
                     main.Classe[0] = 0;
-                    System.out.println("Voce foi derrotado. Eu tinha esperancas em você, que decepção!");
+                    System.out.println("Voce foi derrotado. Eu tinha grandes esperancas em você, que decepção!");
                     break;
+                }
+                else {
+                    System.out.println("Parabens, voce derrotou o monstro. sua recompensa: \n["+main.mons_xp+"] Xp");
                 }
                 return;
 
@@ -338,10 +343,7 @@ public class RPG {
 
             mons_atq(main);
 
-        }//while
-
-            System.out.println("Parabens, voce derrotou o monstro. sua recompensa: \n["+main.mons_xp+"] Xp");
-         
+        }//while         
         
     }
 //_______________________________________________________________
@@ -383,29 +385,50 @@ public class RPG {
     public static void main(String[] args) {
         RPG main = new RPG();      
 
-        //op(main);
-        choice_classe(main);  
-        gerar_criatura(main);
-        encontro(main);         
-        
-         
-        /* 
+        op(main);     
         
         System.out.println("\nVOCE DESEJA IR PARA A CIDADE INICIAL DE <nome cidade tutorial>? - S/N");
         System.out.print("\n> ");
         String opc_ini_city = main.scan.next().toLowerCase();
         
-        switch (opc_ini_city) {
-            case "s":
+        if (opc_ini_city.equals("s")) {
                 System.out.println("TUDO BEM. PORÉM, POR HOJE É MELHOR VOCE DESCANSAR, AMANHÃD CEDO COMEÇAREMOS");
-                break;
-            case "n":
-            System.out.println("TUDO BEM. PORÉM, POR HOJE É MELHOR VOCE DESCANSAR, AMANHÃ CEDO COMEÇAREMOS");
-                break;
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
         }
 
-          encontro(main); */
+        System.out.println("VOCE ACORDA, LEVANTA DA CAMA E PERCEBE QUE ESTÁ MAIS TARDE QUE O PLANEJADO, ENTÃO SAÍ CORRENDO NA TENTATIVA DE CONCEGUIR UM CAVALO PARA SEU TANSPORTE.");
+        System.out.println("POREM, AO CHEGAR AO ESTABULO, VOCE VE O ULTIMO CAVALO SAINDO. ENTAO, NAO LHE RESTA ESCOLHA A NAO SER IR ANDANDO.");
+        System.out.println("PASSANDO PELA SAIDA DA MURALHA, VOCE CAMINHA POR HORAS, ATE QUE SE SENTE CANSADO E DESIDE DESCANCAR...");
+        System.out.println("POREM, QUANDO VOCE MENOS ESPERA, ATRAS DE VOCE SURGE UM MONSTRO. HORA DA BATALHA (OU NAO).");
+        System.out.println("");
+
+        
+        }
+        else if (opc_ini_city.equals("n")) {
+            System.out.println("TUDO BEM. PORÉM, POR HOJE É MELHOR VOCE DESCANSAR, AMANHÃ CEDO COMEÇAREMOS");
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+        }
+
+        System.out.println("VOCE ACORDA, LEVANTA DA CAMA E PERCEBE QUE ESTÁ MAIS TARDE QUE O PLANEJADO, ENTÃO SAÍ CORRENDO NA TENTATIVA DE CONCEGUIR UM CAVALO PARA SEU TANSPORTE.");
+        System.out.println("POREM, AO CHEGAR AO ESTABULO, VOCE VE O ULTIMO CAVALO SAINDO. ENTAO, NAO LHE RESTA ESCOLHA A NAO SER IR ANDANDO.");
+        System.out.println("PASSANDO PELA SAIDA DA MURALHA, VOCE CAMINHA POR HORAS, ATE QUE SE SENTE CANSADO E DESIDE DESCANCAR...");
+        System.out.println("POREM, QUANDO VOCE MENOS ESPERA, ATRAS DE VOCE SURGE UM MONSTRO. HORA DA BATALHA (OU NAO).");
+        
+        }
     
+        gerar_criatura(main);
+        encontro(main);        
+
+        if (main.mons_hp <= 0) {
+            System.out.println("PARABENS, VOCE DERROTOU SEU PRIMEIRO MONSTRO.");
+        }
+        
         System.out.println("Fim");    
     }
     
