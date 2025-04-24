@@ -52,7 +52,7 @@ public class RPG {
             System.out.println("\nQUAL SERÁ O NOME DO HERÓI QUE PARTICIPARÁ DE CANTIGAS DE BARDOS?");
             System.out.print("\n> ");
             main.nome = main.scan.next();
-            System.out.println("\n"+main.nome+"? BELO NOME, PORÉM, SÓ COM NOME NÃO SE DERROTA O MAL. ENTÃO, QUAL SERÁ SUA SEU ESTILO DE COMBATE?");
+            System.out.println("\n"+main.nome+"? BELO NOME, PORÉM, SÓ COM NOME NÃO SE DERROTA O MAL. ENTÃO, QUAL É SEU ESTILO DE COMBATE?");
             
             choice_classe(main); 
          }
@@ -220,7 +220,12 @@ public class RPG {
     }
 //_______________________________________________________________      
     public static void encontro(RPG main) {
-         
+
+        System.out.println("[Hp: "+main.Classe[0]+"/"+main.Classe[1]+"]"+
+        "\n[Hab1: "+main.Classe[2]+"]"+
+        "\n[Hab2: "+main.Classe[3]+"]"+
+        "\n[Hab3: "+main.Classe[4]+"]\n");
+
          while (main.mons) {
          System.out.println("|----------------|");
          System.out.println("|  Fight     Bag |");
@@ -258,7 +263,7 @@ public class RPG {
     }
 //_______________________________________________________________         
     public static void fight(RPG main) {       
-
+        
         if (main.mons_hp > 0) {
             switch (main.opc_class) {             
                 case "MAGO" -> {
@@ -392,7 +397,7 @@ public class RPG {
         String opc_ini_city = main.scan.next().toLowerCase();
         
         if (opc_ini_city.equals("s")) {
-                System.out.println("TUDO BEM. PORÉM, POR HOJE É MELHOR VOCE DESCANSAR, AMANHÃD CEDO COMEÇAREMOS");
+                System.out.println("TUDO BEM. PORÉM, POR HOJE É MELHOR VOCE DESCANSAR, AMANHÃ CEDO COMEÇAREMOS\n");
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
@@ -408,7 +413,7 @@ public class RPG {
         
         }
         else if (opc_ini_city.equals("n")) {
-            System.out.println("TUDO BEM. PORÉM, POR HOJE É MELHOR VOCE DESCANSAR, AMANHÃ CEDO COMEÇAREMOS");
+            System.out.println("TUDO BEM. PORÉM, POR HOJE É MELHOR VOCE DESCANSAR, AMANHÃ CEDO COMEÇAREMOS\n");
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
@@ -509,4 +514,29 @@ main.arqueiro_hab3 = 18;
          
    
 
- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/
