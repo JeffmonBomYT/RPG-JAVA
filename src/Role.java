@@ -2,33 +2,74 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Role {
-    String classe;
+    Scanner scan = new Scanner(System.in);
+
+    String classe, nome;
     int hp;
     int hpMax;
     int dano;
-    int nvl;
+    int nvl, xp=0;
     int hab1, hab2, hab3;
     String hab1Name, hab2Name, hab3Name;
 
     int mons_nivel, mons_hp, mons_hpmax, mons_xp, mons_ad;
 
-    int opc_char;
+    int opc_char, opc_hab;
     String opc_status, opc_encontro;
     boolean mons = true;
-//________________________________________________________________________________________________
-    String escolherClasse() {
-        Scanner scan = new Scanner(System.in);
 
-        do {
-        System.out.println("\n|----------------------|");
-        System.out.println("|  Escolha sua classe  |");
-        System.out.println("| -------------------- |");
-        System.out.println("| 1 - Cavaleiro        |");
-        System.out.println("| 2 - Mago             |");
-        System.out.println("| 3 - Arqueiro         |");
-        System.out.println("|----------------------|");
+//________________________________________________________________________________________________
+    void op() {
+                         
+        System.out.println("[GENERIC HERO] (T-RPG)");
+        System.out.println("\nDesejas jogar [GENERIC HERO]? - S/N");
         System.out.print("\n> ");
-        opc_char = scan.nextInt();
+        String opc_op = scan.next().toLowerCase();
+        
+        if (opc_op.equals("s")) {
+            System.out.println("\nSEJA BEM-VINDO AO MUNDO DE THURFEND");
+            System.out.println("\nVOCE ESTÁ AMBIENTADO COM JOGOS DE TEXT-RPG? - S/N");
+            System.out.print("\n> ");
+            String opc_tutorial = scan.next().toUpperCase();
+
+        switch (opc_tutorial) {
+            case "N":
+                System.out.println("\nEm um text-rpg, voce decide acoes digitando letras ou textos no prompt quando solicitado, resultando em uma acao. ");
+                System.out.println("___________________________________");
+                break;
+            case "S":
+                break;
+                
+            default:
+                System.out.println("Comando digitado incorretamente.");
+        }
+
+        System.out.println("\nQUAL SERÁ O NOME DO HERÓI QUE PARTICIPARÁ DE CANTIGAS DE BARDOS?");
+        System.out.print("\n> ");
+        nome = scan.next();
+        System.out.println("\n"+nome+"? BELO NOME, PORÉM, SÓ COM NOME NÃO SE DERROTA O MAL. ENTÃO, QUAL É SEU ESTILO DE COMBATE?");
+        
+        escolherClasse(); 
+
+        }
+        else if (opc_op.equals("n")) {
+            System.out.println("Adeus.");
+            System.exit(1);
+        }
+         
+    }
+//________________________________________________________________________________________________
+    String escolherClasse() { 
+        do {
+            System.out.println("\n|----------------------|");
+            System.out.println("|  Escolha sua classe  |");
+            System.out.println("| -------------------- |");
+            System.out.println("| 1 - Cavaleiro        |");
+            System.out.println("| 2 - Mago             |");
+            System.out.println("| 3 - Arqueiro         |");
+            System.out.println("|----------------------|");
+            System.out.print("\n> ");
+            opc_char = scan.nextInt();
 
         switch (opc_char) {
             case 1:          
@@ -83,7 +124,8 @@ public class Role {
             if (opc_status.equals("S")) {
                     System.out.println("\n|-------------------|");
                     System.out.println(" Classe: "+classe);
-                    System.out.println(" HpMax: "+hpMax);
+                    System.out.println(" Hp: "+hp+"/"+hpMax);
+                    System.out.println(" Xp: "+xp);
                     System.out.println(" Hab1: "+hab1);
                     System.out.println(" Hab2: "+hab2);
                     System.out.println(" Hab3: "+hab3);
@@ -163,7 +205,7 @@ public class Role {
          mons_xp = mons_hpmax + mons_ad;
 
          System.out.println("Surge um monstro, o "+mons_chose+
-                             " [Nvl. "+mons_nivel+"]"+
+                            "\n[Nvl: "+mons_nivel+"]"+
                             "\n[Vida: "+mons_hp+"/"+mons_hpmax+"]"+
                             "\n[Dano: "+mons_ad+"]\n");
          
@@ -172,6 +214,7 @@ public class Role {
     void mons_atq() {
         do {
             hp -= mons_ad;
+            
             if (mons_hp > 0) {
                 System.out.println("O monstro te atacou");
                 System.out.println(hp+"/"+hpMax+"\n");
@@ -184,6 +227,8 @@ public class Role {
             }
             else {
                 System.out.println("Parabéns, você derrotou o monstro. sua recompensa: \n["+mons_xp+"] Xp");
+                xp += mons_xp;
+                System.out.println("[Xp: "+xp+"]");
             }
 
             return;
@@ -192,42 +237,80 @@ public class Role {
 
     }
 //________________________________________________________________________________________________
+    void fight() {       
+
+        do {
+            System.out.println("\n|--------------------------------------|");
+            System.out.format(" 1 - %s ", hab1Name);
+            System.out.format("| %s - 2", hab2Name);
+            System.out.println("\n ");
+            System.out.format(" 3 - %s ", hab3Name);
+            System.out.format("| Back - 4");
+            System.out.println("\n|--------------------------------------|");
+            System.out.print("\n> ");
+            opc_hab = scan.nextInt();
+
+            switch (opc_hab) {
+                case 1:
+                    mons_hp -= hab1;
+                    break;
+                case 2:
+                    mons_hp -= hab2;
+                    break;
+                case 3:
+                    mons_hp -= hab3;
+                    break;
+                default:
+                    System.out.println("Opção inválida");
+            }
+
+            if (mons_hp <= 0) {
+                mons_hp = 0;
+            }
+
+            System.out.println("Voce machucou o monstro.\n"+mons_hp+"/"+mons_hpmax+"\n");
+
+            mons_atq();
+
+        } while(opc_hab < 1 || opc_hab > 4);
+
+    }
+//________________________________________________________________________________________________
     void encontro() {
-        Scanner scan = new Scanner(System.in);
 
         System.out.println("[Hp: "+hp+"/"+hpMax+"]"+
+        "\n[Xp: "+xp+"]"+
         "\n[Hab1: "+hab1+"]"+
         "\n[Hab2: "+hab2+"]"+
         "\n[Hab3: "+hab3+"]\n");
 
          while (mons) {
-         System.out.println("|----------------|");
-         System.out.println("|  Fight     Bag |");
-         System.out.println("|                |");
-         System.out.println("|  Swap      Run |");
-         System.out.println("|----------------|");
-         System.out.print("\n> ");
-         opc_encontro = scan.next().toLowerCase();
+            System.out.println("|--------------------|");
+            System.out.println("|1 - Fight |  Bag - 3|");
+            System.out.println("|                    |");
+            System.out.println("|3 - Swap  |  Run - 4|");
+            System.out.println("|--------------------|");
+            System.out.print("\n> ");
+            opc_encontro = scan.next().toLowerCase();
               
               switch (opc_encontro) {
                  case "fight":
-                    //...
+                    fight();
                     mons = false;
-                   break;
+                    break;
                  case "bag":
                     //...
                     mons = false;
-                 
-                   break;
+                    break;
                  case "swap":
                     //...
-                       mons = false;
-                       break;                   
+                    mons = false;
+                    break;                   
                  case "run":
                     //...
                     System.out.println("Sistema não implementado");
                     mons = false;
-                   break;
+                    break;
                  default:
                     System.out.println("Comando inválido. tente novamente");                   
               }//switch
@@ -235,17 +318,7 @@ public class Role {
          }
     }
 //________________________________________________________________________________________________
-    void fight() {       
-
-        System.out.println("\n|--------------------------------------|");
-        System.out.format(" 1 - %s ", hab1Name);
-        System.out.format("| %s - 2", hab2Name);
-        System.out.println("\n ");
-        System.out.format(" 3 - %s ", hab3Name);
-        System.out.format("| Back - 4");
-        System.out.println("\n|--------------------------------------|");
     
-    }
 //________________________________________________________________________________________________
 
 //________________________________________________________________________________________________

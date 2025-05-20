@@ -23,7 +23,6 @@ public class RPG {
 
     int[] Classe;
 
-
 //_______________________________________________________________
      public static void op(RPG main) {
                          
