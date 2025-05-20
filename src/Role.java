@@ -14,8 +14,8 @@ public class Role {
 
     int mons_nivel, mons_hp, mons_hpmax, mons_xp, mons_ad;
 
-    int opc_char, opc_hab;
-    String opc_status, opc_encontro;
+    int opc_char, opc_hab, opc_encontro;
+    String opc_status;
     boolean mons = true;
 
 //________________________________________________________________________________________________
@@ -213,9 +213,10 @@ public class Role {
 //________________________________________________________________________________________________
     void mons_atq() {
         do {
-            hp -= mons_ad;
+            
             
             if (mons_hp > 0) {
+                hp -= mons_ad;
                 System.out.println("O monstro te atacou");
                 System.out.println(hp+"/"+hpMax+"\n");
             }
@@ -225,13 +226,11 @@ public class Role {
                 System.out.println("Voce foi derrotado. Eu tinha grandes esperanças em você, que decepção!");
                 break;
             }
-            else {
+            else if (hp > 0 && mons_hp <= 0) {
                 System.out.println("Parabéns, você derrotou o monstro. sua recompensa: \n["+mons_xp+"] Xp");
                 xp += mons_xp;
                 System.out.println("[Xp: "+xp+"]");
             }
-
-            return;
 
         } while (mons_hp >= 0);
 
@@ -291,22 +290,22 @@ public class Role {
             System.out.println("|3 - Swap  |  Run - 4|");
             System.out.println("|--------------------|");
             System.out.print("\n> ");
-            opc_encontro = scan.next().toLowerCase();
+            opc_encontro = scan.nextInt();
               
               switch (opc_encontro) {
-                 case "fight":
+                 case 1:
                     fight();
                     mons = false;
                     break;
-                 case "bag":
+                 case 2:
                     //...
                     mons = false;
                     break;
-                 case "swap":
+                 case 3:
                     //...
                     mons = false;
                     break;                   
-                 case "run":
+                 case 4:
                     //...
                     System.out.println("Sistema não implementado");
                     mons = false;
