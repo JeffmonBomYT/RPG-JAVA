@@ -23,5 +23,7 @@ public class testPlay {
         role.encontro();        
         role.fight();
 
+        System.out.println("Fim do teste");
+
     }
 }
