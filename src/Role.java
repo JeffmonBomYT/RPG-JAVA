@@ -23,7 +23,7 @@ public class Role {
     boolean mons = true;
 
 //________________________________________________________________________________________________
-    void op() {
+    public void op() {
                          
         System.out.println("[GENERIC HERO] (T-RPG)");
         System.out.println("\nDesejas jogar [GENERIC HERO]? - S/N");
@@ -63,7 +63,7 @@ public class Role {
          
     }
 //________________________________________________________________________________________________
-    void escolherClasse() { 
+    public void escolherClasse() { 
         do {
             System.out.println("\n|----------------------|");
             System.out.println("|  Escolha sua classe  |");
@@ -138,7 +138,7 @@ public class Role {
             
     }
 //________________________________________________________________________________________________
-    /* void gerar_criatura() {
+    /* public void gerar_criatura() {
          String[] lista_mons = {"Slime", "Esqueleto", "Orc", "Coelho assasino", "Lobo"};
          mons_chose = lista_mons[rng.nextInt(lista_mons.length)];         
 
@@ -235,7 +235,7 @@ public class Role {
 
     }
 //________________________________________________________________________________________________
-    void fight() {       
+    public void fight() {       
 
         do {
             System.out.println("\n|--------------------------------------|");
@@ -268,7 +268,7 @@ public class Role {
 
     } */
 //________________________________________________________________________________________________
-    void encontro() {
+    public void encontro() {
 
         System.out.println("[Hp: "+hp+"/"+hpMax+"]"+
         "\n[Xp: "+xp+"]"+
@@ -346,7 +346,7 @@ public class Role {
 
 
 
-void gerar_criatura() {
+public void gerar_criatura() {
          String[] lista_mons = {"Slime", "Esqueleto", "Orc", "Coelho assasino", "Lobo"};
          mons_chose = lista_mons[rng.nextInt(lista_mons.length)];         
 
@@ -419,11 +419,11 @@ void gerar_criatura() {
                             "\n[Dano: "+mons_ad+"]\n");
     }     
 //________________________________________________________________________________________________
-    void mons_atq() {
+    public void mons_atq() {
         //Esvaziado
     }
 //________________________________________________________________________________________________
-    void fight() {       
+    public void fight() {       
 
         while(opc_fight) {
             System.out.println("\n|--------------------------------------|");
