@@ -346,6 +346,7 @@ public class Role {
 
 
 
+
 public void gerar_criatura() {
          String[] lista_mons = {"Slime", "Esqueleto", "Orc", "Coelho assasino", "Lobo"};
          mons_chose = lista_mons[rng.nextInt(lista_mons.length)];         
@@ -420,8 +421,32 @@ public void gerar_criatura() {
     }     
 //________________________________________________________________________________________________
     public void mons_atq() {
-        //Esvaziado
-    }
+
+                if (mons_hp > 0) {
+                    hp -= mons_ad;
+                    System.out.println("O monstro te atacou");
+                    System.out.println(hp+"/"+hpMax+"\n");
+                    
+                    if (hp >= 1) {
+                        fight();
+                    }
+                }
+
+                if (hp <= 0 && mons_hp >= 1) {
+                    hp = 0;
+                    System.out.println("Você foi derrotado. Eu tinha grandes esperanças em você, que decepção!");
+                    System.out.println("[Hp: "+hp+"/"+hpMax+"] - [Mons. Hp: "+mons_hp+"/"+mons_hpmax+"]");
+                }
+                else if (hp >= 1 && mons_hp <= 0) {
+                    mons_hp = 0;
+                    System.out.println("Parabéns, você derrotou o monstro.");
+                    System.out.println("[Hp: "+hp+"/"+hpMax+"] - [Mons. Hp: "+mons_hp+"/"+mons_hpmax+"]");
+                    System.out.println("Xp recebida: "+xp+"");
+                    xp += mons_xp;
+                }
+
+            } 
+
 //________________________________________________________________________________________________
     public void fight() {       
 
@@ -456,43 +481,14 @@ public void gerar_criatura() {
                     System.out.println("Opção inválida");
             }
 
-            } 
+        } 
 
-            while (attack_mons) {
-                if (mons_hp > 0) {
-                    hp -= mons_ad;
-                    System.out.println("O monstro te atacou");
-                    System.out.println(hp+"/"+hpMax+"\n");
-                }
-
-                if (hp <= 0 && mons_hp > 0) {
-                    hp = 0;
-                    System.out.println("Você foi derrotado. Eu tinha grandes esperanças em você, que decepção!");
-                    System.out.println("[Hp: "+hp+"/"+hpMax+"] - [Mons. Hp: "+mons_hp+"/"+mons_hpmax+"]");
-                    attack_mons = false;
-                    break;
-                }
-                else if (hp > 0 && mons_hp <= 0) {
-                    System.out.println("Parabéns, você derrotou o monstro.");
-                    System.out.println("[Hp: "+hp+"/"+hpMax+"] - [Mons. Hp: "+mons_hp+"/"+mons_hpmax+"]");
-                    System.out.println("Xp recebida: "+xp+"");
-                    xp += mons_xp;
-                    attack_mons = false;
-                    break;
-                }
-
-            } 
-
+           
     }
 
 
 }
 
-
-
-
-        //case "MAGO":
-        //          Classe = new int[] {/*Hp*/12,/*HPMax*/12, /*Hab1*/6, /*Hab2*/9, /*Hab3*/15};
 
 /*
 
