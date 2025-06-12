@@ -1,9 +1,10 @@
 import java.util.Scanner;
 
-public class testPlay {
+public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in); 
         Role role = new Role();
+        Sistema sis = new Sistema();
 
         //role.op();
         role.escolherClasse();
@@ -19,9 +20,9 @@ public class testPlay {
            
         } */
     
-        role.gerar_criatura();
-        role.encontro();        
-        role.fight();
+        sis.gerar_criatura();
+        sis.encontro();        
+        sis.fight();
 
         System.out.println("Fim do teste");
 
