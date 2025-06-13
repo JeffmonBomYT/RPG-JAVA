@@ -4,17 +4,18 @@ public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in); 
         Role role = new Role();
-        Sistema sis = new Sistema();
+        Sistema sis = new Sistema(role);
         
-        sis.cenaLuta();
+        
 
-        /* role.escolherClasse(); 
-        
-        sis.gerar_criatura();
-        sis.encontro();        
+        role.escolherClasse(); 
+        sis.gerar_criatura();   
+        sis.encontro();  
         sis.fight();
 
-        System.out.println("Fim do teste"); */
+        role.MostrarStatus();
+        
+        System.out.println("Fim do teste"); 
  
     }
 }

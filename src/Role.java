@@ -8,12 +8,11 @@ public class Role {
     String classe, nome;
     int hp;
     int hpMax;
-    int dano;
     int nvl, xp=0;
     int hab1, hab2, hab3;
     String hab1Name, hab2Name, hab3Name;
 
-    int opc_char;
+    int opcSelectClass;
     String opc_status;
 
 //________________________________________________________________________________________________
@@ -27,9 +26,9 @@ public class Role {
             System.out.println("| 3 - Arqueiro         |");
             System.out.println("|----------------------|");
             System.out.print("\n> ");
-            opc_char = scan.nextInt();
+            opcSelectClass = scan.nextInt();
 
-        switch (opc_char) {
+        switch (opcSelectClass) {
             case 1:          
                 classe = "Cavaleiro";
                 nvl = 1;
@@ -71,25 +70,30 @@ public class Role {
                 break;
             default:
                 System.out.println("\nClasse não existe ou foi escrita incorretamente");
+
         } 
         
-        } while (opc_char > 3 || opc_char < 1);   
+        } while (opcSelectClass > 3 || opcSelectClass < 1);   
         
             System.out.println("\nDesejas ver os status de sua classe? S/N");
             System.out.print("\n> ");
             opc_status = scan.next().toUpperCase();
 
             if (opc_status.equals("S")) {
-                    System.out.println("\n|-------------------|");
-                    System.out.println(" Classe: "+classe);
-                    System.out.println(" Hp: "+hp+"/"+hpMax);
-                    System.out.println(" Xp: "+xp);
-                    System.out.println(" Hab1: "+hab1);
-                    System.out.println(" Hab2: "+hab2);
-                    System.out.println(" Hab3: "+hab3);
-                    System.out.println("|-------------------|\n");
+                   MostrarStatus();
             }
             
     }
 //________________________________________________________________________________________________
+    public void MostrarStatus() {
+        System.out.println("\n|-------------------|");
+        System.out.println(" [Classe: "+classe+"]");
+        System.out.println(" [Hp: "+hp+"/"+hpMax+"]");
+        System.out.println(" [Xp: "+xp+"]");
+        System.out.println(" [Hab1: "+hab1+"]");
+        System.out.println(" [Hab2: "+hab2+"]");
+        System.out.println(" [Hab3: "+hab3+"]");
+        System.out.println("|-------------------|\n");
+    }
+
 }

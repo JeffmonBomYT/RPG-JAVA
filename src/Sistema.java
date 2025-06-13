@@ -2,14 +2,18 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Sistema {
-    Role role = new Role();
     Scanner scan = new Scanner(System.in);
     Random rng = new Random();
 
+    Role role; 
+
+    public Sistema(Role role) {
+        this.role = role;
+    }
+//_______________________________________________________________________________________________
     int mons_nivel, mons_hp, mons_hpmax, mons_xp, mons_ad;
     String mons_chose;
-    boolean attack_mons = true;
-    boolean mons = true;
+    boolean monsAlive = true;
 
     int opc_hab, opc_encontro;
     boolean opc_fight = true;
@@ -111,69 +115,36 @@ public class Sistema {
                             "\n[Nvl: "+mons_nivel+"]"+
                             "\n[Vida: "+mons_hp+"/"+mons_hpmax+"]"+
                             "\n[Dano: "+mons_ad+"]\n");
-    }     
-//________________________________________________________________________________________________
-    public void mons_atq() {
-
-                if (mons_hp > 0) {
-                    role.hp -= mons_ad;
-                    System.out.println("O monstro te atacou");
-                    System.out.println(role.hp+"/"+role.hpMax+"\n");
-                    
-                    if (role.hp >= 1) {
-                        fight();
-                    }
-                }
-
-                if (role.hp <= 0 && mons_hp >= 1) {
-                    role.hp = 0;
-                    System.out.println("Você foi derrotado. Eu tinha grandes esperanças em você, que decepção!");
-                    System.out.println("[Hp: "+role.hp+"/"+role.hpMax+"] - [Mons. Hp: "+mons_hp+"/"+mons_hpmax+"]");
-                }
-                else if (role.hp >= 1 && mons_hp <= 0) {
-                    mons_hp = 0;
-                    System.out.println("Parabéns, você derrotou o monstro.");
-                    System.out.println("[Hp: "+role.hp+"/"+role.hpMax+"] - [Mons. Hp: "+mons_hp+"/"+mons_hpmax+"]");
-                    System.out.println("Xp recebida: "+role.xp+"");
-                    role.xp += mons_xp;
-                }
-
-            } 
+    }          
 //________________________________________________________________________________________________           
     public void encontro() {
 
-        System.out.println("[Hp: "+role.hp+"/"+role.hpMax+"]"+
-        "\n[Xp: "+role.xp+"]"+
-        "\n[Hab1: "+role.hab1+"]"+
-        "\n[Hab2: "+role.hab2+"]"+
-        "\n[Hab3: "+role.hab3+"]\n");
-
-         while (mons) {
-            System.out.println("|--------------------|");
-            System.out.println("|1 - Fight |  Bag - 3|");
-            System.out.println("|                    |");
-            System.out.println("|3 - Swap  |  Run - 4|");
-            System.out.println("|--------------------|");
+         while (monsAlive) {
+            System.out.println("|--------------------| [Hp: "+role.hp+"/"+role.hpMax+"]");
+            System.out.println("|1 - Fight |  Bag - 3| [Xp: "+role.xp+"]");
+            System.out.println("|                    | [Hab1: "+role.hab1+"]");
+            System.out.println("|3 - Swap  |  Run - 4| [Hab2: "+role.hab2+"]");
+            System.out.println("|--------------------| [Hab3: "+role.hab3+"]");
             System.out.print("\n> ");
             opc_encontro = scan.nextInt();
               
               switch (opc_encontro) {
                  case 1:
                     fight();
-                    mons = false;
+                    monsAlive = false;
                     break;
                  case 2:
                     //...
-                    mons = false;
+                    monsAlive = false;
                     break;
                  case 3:
                     //...
-                    mons = false;
+                    monsAlive = false;
                     break;                   
                  case 4:
                     //...
                     System.out.println("Sistema não implementado");
-                    mons = false;
+                    monsAlive = false;
                     break;
                  default:
                     System.out.println("Comando inválido. tente novamente");                   
@@ -199,26 +170,57 @@ public class Sistema {
                 case 1:
                     mons_hp -= role.hab1;
                     System.out.println("Você machucou o monstro.\n"+mons_hp+"/"+mons_hpmax+"\n");
-                    opc_fight = false;
+                    if (mons_hp <= 0) {
+                        opc_fight = false;
+                    }
                     break;
                 case 2:
                     mons_hp -= role.hab2;
                     System.out.println("Você machucou o monstro.\n"+mons_hp+"/"+mons_hpmax+"\n");
-                    opc_fight = false;
+                    if (mons_hp <= 0) {
+                        opc_fight = false;
+                    }
                     break;
                 case 3:
                     mons_hp -= role.hab3;
                     System.out.println("Você machucou o monstro.\n"+mons_hp+"/"+mons_hpmax+"\n");
-                    opc_fight = false;
+                    if (mons_hp <= 0) {
+                        opc_fight = false;
+                    }
                     break;
                 default:
                     System.out.println("Opção inválida");
             }
 
-        } 
+            if (mons_hp > 0 && role.hp > 0) {
+                role.hp -= mons_ad;
+                System.out.println("O monstro te atacou");
+                System.out.println(role.hp+"/"+role.hpMax+"\n");
+                if (role.hp <= 0 && mons_hp > 0) {
+                    break;
+                }
+            }
 
-           
+            FimBatalha();
+            
+
+        } 
     }
+//________________________________________________________________________________________________
+    public void FimBatalha() {
+        if (role.hp <= 0 && mons_hp > 0)  {
+            role.hp = 0;
+            System.out.println("Você foi derrotado. Eu tinha grandes esperanças em você, que decepção!");
+            System.out.println("[Hp: "+role.hp+"/"+role.hpMax+"] - [Mons. Hp: "+mons_hp+"/"+mons_hpmax+"]");
+        }             
+        else if (mons_hp <= 0 && role.hp > 0) {
+            mons_hp = 0;
+            System.out.println("Parabéns, você derrotou o monstro.");
+            System.out.println("[Hp: "+role.hp+"/"+role.hpMax+"] - [Mons. Hp: "+mons_hp+"/"+mons_hpmax+"]");
+            System.out.println("Xp recebida: "+mons_xp);
+            role.xp += mons_xp;
+        }
+            }
 //________________________________________________________________________________________________
     public void bag() {
         
@@ -231,20 +233,7 @@ public class Sistema {
     public void run() {
 
     }
-//________________________________________________________________________________________________
-    public void cenaLuta() {
-        System.out.println();
-        System.out.println("        "+mons_chose+" ["+mons_nivel+"]");
-        System.out.println("        "+mons_hp+"/"+mons_hpmax);
-        System.out.println();
-        System.out.println("\n"+role.nome+" ["+role.nvl+"]");
-        System.out.println(+role.hp+"/"+role.hpMax);
-        System.out.println();
-
-        fight();
-        
-    }
-    
+//________________________________________________________________________________________________    
 }
 
 /*
