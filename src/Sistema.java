@@ -14,147 +14,33 @@ public class Sistema {
     int opc_hab, opc_encontro;
     boolean opc_fight = true;
 
-/* 
 //________________________________________________________________________________________________
-    void mons_atq() {
+    public void op() {
+                         
+        System.out.println("[GENERIC HERO] (T-RPG)");
+        System.out.println("\nDesejas jogar [GENERIC HERO]? - S/N");
+        System.out.print("\n> ");
+        String opc_op = scan.next().toLowerCase();
+        
+        if (opc_op.equals("s")) {
+            System.out.println("\nSEJA BEM-VINDO AO MUNDO DE THURFEND");
 
-            System.out.println("Voce machucou o monstro.\n"+mons_hp+"/"+mons_hpmax+"\n");
+            System.out.println("\nQUAL SERÁ O NOME DO HERÓI QUE PARTICIPARÁ DE CANTIGAS DE BARDOS?");
+            System.out.print("\n> ");
+            role.nome = scan.next();
+            System.out.println("\n"+role.nome+"? BELO NOME, PORÉM, SÓ COM NOME NÃO SE DERROTA O MAL. ENTÃO, QUAL É SEU ESTILO DE COMBATE?");
+            
+            role.escolherClasse(); 
 
-            if (mons_hp > 0) {
-                hp -= mons_ad;
-                System.out.println("O monstro te atacou");
-                System.out.println(hp+"/"+hpMax+"\n");
-            }
-
-            if (hp <= 0 && mons_hp > 0) {
-                hp = 0;
-                System.out.println("[Hp: "+hp+"/"+hpMax+"] - [Mons. Hp: "+mons_hp+"/"+mons_hpmax+"]");
-                System.out.println("Você foi derrotado. Eu tinha grandes esperanças em você, que decepção!");
-            }
-            else if (hp > 0 && mons_hp <= 0) {
-                System.out.println("[Hp: "+hp+"/"+hpMax+"] - [Mons. Hp: "+mons_hp+"/"+mons_hpmax+"]");
-                System.out.println("Parabéns, você derrotou o monstro.");
-                xp += mons_xp;
-                System.out.println("Xp recebida: "+xp+"");
-            }
-
+        }
+        else if (opc_op.equals("n")) {
+            System.out.println("Adeus.");
+            System.exit(1);
+        }
+         
     }
 //________________________________________________________________________________________________
-    public void fight() {       
-
-        do {
-            System.out.println("\n|--------------------------------------|");
-            System.out.format(" 1 - %s ", hab1Name);
-            System.out.format("| %s - 2", hab2Name);
-            System.out.println("\n ");
-            System.out.format(" 3 - %s ", hab3Name);
-            System.out.format("| Back - 4");
-            System.out.println("\n|--------------------------------------|");
-            System.out.print("\n> ");
-            opc_hab = scan.nextInt();
-
-            switch (opc_hab) {
-                case 1:
-                    mons_hp -= hab1;
-                    break;
-                case 2:
-                    mons_hp -= hab2;
-                    break;
-                case 3:
-                    mons_hp -= hab3;
-                    break;
-                default:
-                    System.out.println("Opção inválida");
-            }
-
-            mons_atq();        
-
-        } while(opc_hab < 1 || opc_hab > 4);
-
-    } 
-*/
-
-//________________________________________________________________________________________________
-    public void encontro() {
-
-        System.out.println("[Hp: "+role.hp+"/"+role.hpMax+"]"+
-        "\n[Xp: "+role.xp+"]"+
-        "\n[Hab1: "+role.hab1+"]"+
-        "\n[Hab2: "+role.hab2+"]"+
-        "\n[Hab3: "+role.hab3+"]\n");
-
-         while (mons) {
-            System.out.println("|--------------------|");
-            System.out.println("|1 - Fight |  Bag - 3|");
-            System.out.println("|                    |");
-            System.out.println("|3 - Swap  |  Run - 4|");
-            System.out.println("|--------------------|");
-            System.out.print("\n> ");
-            opc_encontro = scan.nextInt();
-              
-              switch (opc_encontro) {
-                 case 1:
-                    fight();
-                    mons = false;
-                    break;
-                 case 2:
-                    //...
-                    mons = false;
-                    break;
-                 case 3:
-                    //...
-                    mons = false;
-                    break;                   
-                 case 4:
-                    //...
-                    System.out.println("Sistema não implementado");
-                    mons = false;
-                    break;
-                 default:
-                    System.out.println("Comando inválido. tente novamente");                   
-              }//switch
-              
-         }
-    }
-//________________________________________________________________________________________________
-    
-//________________________________________________________________________________________________
-
-//________________________________________________________________________________________________
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-public void gerar_criatura() {
+    public void gerar_criatura() {
          String[] lista_mons = {"Slime", "Esqueleto", "Orc", "Coelho assasino", "Lobo"};
          mons_chose = lista_mons[rng.nextInt(lista_mons.length)];         
 
@@ -253,9 +139,50 @@ public void gerar_criatura() {
                 }
 
             } 
+//________________________________________________________________________________________________           
+    public void encontro() {
 
+        System.out.println("[Hp: "+role.hp+"/"+role.hpMax+"]"+
+        "\n[Xp: "+role.xp+"]"+
+        "\n[Hab1: "+role.hab1+"]"+
+        "\n[Hab2: "+role.hab2+"]"+
+        "\n[Hab3: "+role.hab3+"]\n");
+
+         while (mons) {
+            System.out.println("|--------------------|");
+            System.out.println("|1 - Fight |  Bag - 3|");
+            System.out.println("|                    |");
+            System.out.println("|3 - Swap  |  Run - 4|");
+            System.out.println("|--------------------|");
+            System.out.print("\n> ");
+            opc_encontro = scan.nextInt();
+              
+              switch (opc_encontro) {
+                 case 1:
+                    fight();
+                    mons = false;
+                    break;
+                 case 2:
+                    //...
+                    mons = false;
+                    break;
+                 case 3:
+                    //...
+                    mons = false;
+                    break;                   
+                 case 4:
+                    //...
+                    System.out.println("Sistema não implementado");
+                    mons = false;
+                    break;
+                 default:
+                    System.out.println("Comando inválido. tente novamente");                   
+              }//switch
+              
+         }
+    }
 //________________________________________________________________________________________________
-    public void fight() {       
+    public void fight() {
 
         while(opc_fight) {
             System.out.println("\n|--------------------------------------|");
@@ -292,4 +219,100 @@ public void gerar_criatura() {
 
            
     }
+//________________________________________________________________________________________________
+    public void bag() {
+        
+    }
+//________________________________________________________________________________________________
+    public void swap() {
+         
+    }
+//________________________________________________________________________________________________
+    public void run() {
+
+    }
+//________________________________________________________________________________________________
+    public void cenaLuta() {
+        System.out.println();
+        System.out.println("        "+mons_chose+" ["+mons_nivel+"]");
+        System.out.println("        "+mons_hp+"/"+mons_hpmax);
+        System.out.println();
+        System.out.println("\n"+role.nome+" ["+role.nvl+"]");
+        System.out.println(+role.hp+"/"+role.hpMax);
+        System.out.println();
+
+        fight();
+        
+    }
+    
 }
+
+/*
+IDEIAS:
+
+- tela inicial ##
+    L> escolher nome ##
+- escolher classe 
+
+
+- ## gerar um monstro  
+- ## encontro com monstros  
+     L> talvez batalha dupla
+    ## L> interface de batalha 
+    ## L> interface de espólio / derrota
+
+- cidades
+- viajem
+    L> chance de algo acontecer
+
+- descanso    
+    L> estabelecimentos
+    L> ao ar livre
+
+
+---------------------------------|
+<cidade inicial>
+- acampamento de guerra
+- general - guia de introducao 
+                 L> 1º combate
+                 L> acoes basicas
+
+---------------------------------|
+TIRAR TEMPORARIAMENTE:
+- por ora, tirar melle de "arqueiro"
+- escolher 1 aliado 
+
+________________________________________
+
+INTERFACE DE ENCONTRO
+System.out.println("|----------------|");
+System.out.println("|  Fight     Bag |");
+System.out.println("|                |");
+System.out.println("|  Swap      Run |");
+System.out.println("|----------------|");
+
+INTERCADE DE LUTA
+System.out.println("|----------------|");
+System.out.println("|  Hab1     Hab2 |");
+System.out.println("|                |");
+System.out.println("|  Hab3     Back |");
+System.out.println("|----------------|");
+
+//MAGO
+mago_hpmax = 12;
+mago_hab1 = 6;
+mago_hab2 = 9; (6 * 1.5)
+mago_hab3 = 15;
+         
+//CAVALEIRO          
+cavaleiro_hpmax = 20;
+cavaleiro_hab1 = 10; 
+cavaleiro_hab2 = 15; (12 + 3)
+cavaleiro_hab3 = 20;
+                 
+//ARQUEIRO
+arqueiro_hpmax = 16;
+arqueiro_hab1 = 9; 
+arqueiro_hab2 = 12; (9 + 3) 
+arqueiro_hab3 = 18;
+*/
