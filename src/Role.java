@@ -8,7 +8,7 @@ public class Role {
     String classe, nome;
     int hp;
     int hpMax;
-    int nvl, xp=0;
+    int nvl, xp=0, xpMax=0;
     int hab1, hab2, hab3;
     String hab1Name, hab2Name, hab3Name;
 
@@ -89,11 +89,25 @@ public class Role {
         System.out.println("\n|-------------------|");
         System.out.println(" [Classe: "+classe+"]");
         System.out.println(" [Hp: "+hp+"/"+hpMax+"]");
-        System.out.println(" [Xp: "+xp+"]");
+        System.out.println(" [Xp: "+xpMax+"]");
         System.out.println(" [Hab1: "+hab1+"]");
         System.out.println(" [Hab2: "+hab2+"]");
         System.out.println(" [Hab3: "+hab3+"]");
         System.out.println("|-------------------|\n");
     }
+//________________________________________________________________________________________________
+
 
 }
+
+
+/*
+    Implementar um sistema que faça com que seja atribuído por nivel de personagem:
+XpMax e fazer com que se Xp chegar a XpMax almentar o nivel do jogador e atribuir um 
+novo valor (talvez baseado em algum calculo) à XpMax
+
+
+
+
+
+*/

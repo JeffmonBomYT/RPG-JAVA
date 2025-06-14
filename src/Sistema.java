@@ -5,9 +5,7 @@ public class Sistema {
     Scanner scan = new Scanner(System.in);
     Random rng = new Random();
 
-
     Role role;
-
     public Sistema(Role role) {
         this.role = role; 
     }
@@ -18,7 +16,6 @@ public class Sistema {
 
     int opcHab, opcEncontro;
     boolean opcFight = true;
-
 //________________________________________________________________________________________________
     public void op() {
                          
@@ -109,8 +106,8 @@ public class Sistema {
                 monsDamage = rng.nextInt(44, 49);
             }
          }
-         //Xp
-         monsXp = monsHpMax + monsDamage;
+         
+         monsXp = monsHpMax + monsDamage; //Xp
 
          System.out.println("Surge um monstro, o "+monsChoose+" [Nvl: "+monsNivel+"]"+
                             "\n[Vida: "+monsHp+"/"+monsHpMax+"]"+
@@ -119,43 +116,45 @@ public class Sistema {
 //________________________________________________________________________________________________           
     public void encontro() {
 
-         while (monsAlive) {
+        while (monsAlive) {
             System.out.println("|--------------------| [Hp: "+role.hp+"/"+role.hpMax+"]");
-            System.out.println("|1 - Fight |  Bag - 3| [Xp: "+role.xp+"]");
+            System.out.println("|1 - Fight |  Bag - 3| [Xp: "+role.xp+"/"+role.xpMax+"]");
             System.out.println("|                    | [Hab1: "+role.hab1+"]");
             System.out.println("|3 - Swap  |  Run - 4| [Hab2: "+role.hab2+"]");
             System.out.println("|--------------------| [Hab3: "+role.hab3+"]");
             System.out.print("\n> ");
             opcEncontro = scan.nextInt();
               
-              switch (opcEncontro) {
-                 case 1:
+            switch (opcEncontro) {
+                case 1:
                     fight();
                     monsAlive = false;
                     break;
-                 case 2:
-                    //...
-                    monsAlive = false;
-                    break;
-                 case 3:
-                    //...
-                    monsAlive = false;
-                    break;                   
-                 case 4:
+                case 2:
                     //...
                     System.out.println("Sistema não implementado");
                     monsAlive = false;
                     break;
-                 default:
+                case 3:
+                    //...
+                    System.out.println("Sistema não implementado");
+                    monsAlive = false;
+                    break;                   
+                case 4:
+                    //...
+                    System.out.println("Sistema não implementado");
+                    monsAlive = false;
+                    break;
+                default:
                     System.out.println("Comando inválido. tente novamente");                   
-              }//switch
+            }//switch
               
-         }
+        }
     }
 //________________________________________________________________________________________________
     public void fight() {
 
-        while(opcFight) {
+        do {
             System.out.println("\n|--------------------------------------|");
             System.out.format(" 1 - %s ", role.hab1Name);
             System.out.format("| %s - 2", role.hab2Name);
@@ -190,35 +189,32 @@ public class Sistema {
                     break;
                 default:
                     System.out.println("Opção inválida");
-            }
-
+            } 
+             
             if (monsHp > 0 && role.hp > 0) {
                 role.hp -= monsDamage;
                 System.out.println("O monstro te atacou");
                 System.out.println(role.hp+"/"+role.hpMax+"\n");
-                if (role.hp <= 0 && monsHp > 0) {
+                
+                if (role.hp <= 0 && monsHp > 0)  {
+                    role.hp = 0;
+                    System.out.println("Você foi derrotado. Eu tinha grandes esperanças em você, que decepção!");
+                    System.out.println("[Hp: "+role.hp+"/"+role.hpMax+"] - [Mons. Hp: "+monsHp+"/"+monsHpMax+"]");
+                    opcFight = false;
+                    break;
+                }    
+                else if (monsHp <= 0 && role.hp > 0) {
+                    monsHp = 0;
+                    System.out.println("Parabéns, você derrotou o monstro.");
+                    System.out.println("[Hp: "+role.hp+"/"+role.hpMax+"] - [Mons. Hp: "+monsHp+"/"+monsHpMax+"]");
+                    System.out.println("Xp recebida: "+monsXp);
+                    role.xp += monsXp;
+                    opcFight = false;
                     break;
                 }
             }
-
-            FimBatalha();
-
-        } 
-    }
-//________________________________________________________________________________________________
-    public void FimBatalha() {
-        if (role.hp <= 0 && monsHp > 0)  {
-            role.hp = 0;
-            System.out.println("Você foi derrotado. Eu tinha grandes esperanças em você, que decepção!");
-            System.out.println("[Hp: "+role.hp+"/"+role.hpMax+"] - [Mons. Hp: "+monsHp+"/"+monsHpMax+"]");
-        }             
-        else if (monsHp <= 0 && role.hp > 0) {
-            monsHp = 0;
-            System.out.println("Parabéns, você derrotou o monstro.");
-            System.out.println("[Hp: "+role.hp+"/"+role.hpMax+"] - [Mons. Hp: "+monsHp+"/"+monsHpMax+"]");
-            System.out.println("Xp recebida: "+monsXp);
-            role.xp += monsXp;
-        } 
+            
+        } while(opcFight);
     }
 //________________________________________________________________________________________________
     public void bag() {
@@ -245,7 +241,6 @@ IDEIAS:
 
 - ## gerar um monstro  
 - ## encontro com monstros  
-     L> talvez batalha dupla
     ## L> interface de batalha 
     ## L> interface de espólio / derrota
 
@@ -260,7 +255,7 @@ IDEIAS:
 
 ---------------------------------|
 <cidade inicial>
-- acampamento de guerra
+- acampamento de guerra/posto avançado
 - general - guia de introducao 
                  L> 1º combate
                  L> acoes basicas
