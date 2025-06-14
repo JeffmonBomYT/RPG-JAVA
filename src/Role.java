@@ -13,7 +13,7 @@ public class Role {
     String hab1Name, hab2Name, hab3Name;
 
     int opcSelectClass;
-    String opc_status;
+    String opcStatus;
 
 //________________________________________________________________________________________________
     public void escolherClasse() { 
@@ -77,9 +77,9 @@ public class Role {
         
             System.out.println("\nDesejas ver os status de sua classe? S/N");
             System.out.print("\n> ");
-            opc_status = scan.next().toUpperCase();
+            opcStatus = scan.next().toUpperCase();
 
-            if (opc_status.equals("S")) {
+            if (opcStatus.equals("S")) {
                    MostrarStatus();
             }
             

@@ -5,18 +5,19 @@ public class Sistema {
     Scanner scan = new Scanner(System.in);
     Random rng = new Random();
 
-    Role role; 
+
+    Role role;
 
     public Sistema(Role role) {
-        this.role = role;
+        this.role = role; 
     }
 //_______________________________________________________________________________________________
-    int mons_nivel, mons_hp, mons_hpmax, mons_xp, mons_ad;
-    String mons_chose;
+    int monsNivel, monsHp, monsHpMax, monsXp, monsDamage;
+    String monsChoose;
     boolean monsAlive = true;
 
-    int opc_hab, opc_encontro;
-    boolean opc_fight = true;
+    int opcHab, opcEncontro;
+    boolean opcFight = true;
 
 //________________________________________________________________________________________________
     public void op() {
@@ -46,75 +47,74 @@ public class Sistema {
 //________________________________________________________________________________________________
     public void gerar_criatura() {
          String[] lista_mons = {"Slime", "Esqueleto", "Orc", "Coelho assasino", "Lobo"};
-         mons_chose = lista_mons[rng.nextInt(lista_mons.length)];         
+         monsChoose = lista_mons[rng.nextInt(lista_mons.length)];         
 
-        switch (mons_chose) {
-            case "Slime" -> mons_nivel = rng.nextInt(1, 2);
-            case "Esqueleto" -> mons_nivel = rng.nextInt(2,4);
-            case "Orc" -> mons_nivel = rng.nextInt(4, 6);
-            case "Coelho assasino" -> mons_nivel = rng.nextInt(1, 3);
-            case "Lobo" -> mons_nivel = rng.nextInt(2, 5);
+        switch (monsChoose) {
+            case "Slime" -> monsNivel = rng.nextInt(1, 2);
+            case "Esqueleto" -> monsNivel = rng.nextInt(2,4);
+            case "Orc" -> monsNivel = rng.nextInt(4, 6);
+            case "Coelho assasino" -> monsNivel = rng.nextInt(1, 3);
+            case "Lobo" -> monsNivel = rng.nextInt(2, 5);
         } 
 
-        switch (mons_nivel) {
+        switch (monsNivel) {
             case 1 -> {
-                mons_hpmax = rng.nextInt(1, 7);
-                mons_hp = mons_hpmax;
-                mons_ad = rng.nextInt(1, 5);
+                monsHpMax = rng.nextInt(1, 7);
+                monsHp = monsHpMax;
+                monsDamage = rng.nextInt(1, 5);
             }
             case 2 -> {
-                mons_hpmax = rng.nextInt(6, 11);
-                mons_hp = mons_hpmax;
-                mons_ad = rng.nextInt(4, 10);
+                monsHpMax = rng.nextInt(6, 11);
+                monsHp = monsHpMax;
+                monsDamage = rng.nextInt(4, 10);
             }
             case 3 -> {
-                mons_hpmax = rng.nextInt(10, 15);
-                mons_hp = mons_hpmax;
-                mons_ad = rng.nextInt(9, 13);
+                monsHpMax = rng.nextInt(10, 15);
+                monsHp = monsHpMax;
+                monsDamage = rng.nextInt(9, 13);
             }
             case 4 -> {
-                mons_hpmax = rng.nextInt(14, 20);
-                mons_hp = mons_hpmax;
-                mons_ad = rng.nextInt(12, 17);
+                monsHpMax = rng.nextInt(14, 20);
+                monsHp = monsHpMax;
+                monsDamage = rng.nextInt(12, 17);
             }
             case 5 -> {
-                mons_hpmax = rng.nextInt(19, 25);
-                mons_hp = mons_hpmax;
-                mons_ad = rng.nextInt(16, 22);
+                monsHpMax = rng.nextInt(19, 25);
+                monsHp = monsHpMax;
+                monsDamage = rng.nextInt(16, 22);
             }
             case 6 -> {
-                mons_hpmax = rng.nextInt(24, 30);
-                mons_hp = mons_hpmax;
-                mons_ad = rng.nextInt(21, 29);
+                monsHpMax = rng.nextInt(24, 30);
+                monsHp = monsHpMax;
+                monsDamage = rng.nextInt(21, 29);
             }
             case 7 -> {
-                mons_hpmax = rng.nextInt(29, 36);
-                mons_hp = mons_hpmax;
-                mons_ad = rng.nextInt(28, 33);
+                monsHpMax = rng.nextInt(29, 36);
+                monsHp = monsHpMax;
+                monsDamage = rng.nextInt(28, 33);
             }
             case 8 -> {
-                mons_hpmax = rng.nextInt(35, 42);
-                mons_hp = mons_hpmax;
-                mons_ad = rng.nextInt(32, 40);
+                monsHpMax = rng.nextInt(35, 42);
+                monsHp = monsHpMax;
+                monsDamage = rng.nextInt(32, 40);
             }
             case 9 -> {
-                mons_hpmax = rng.nextInt(41, 50);
-                mons_hp = mons_hpmax;
-                mons_ad = rng.nextInt(39, 45);
+                monsHpMax = rng.nextInt(41, 50);
+                monsHp = monsHpMax;
+                monsDamage = rng.nextInt(39, 45);
             }
             case 10 -> {
-                mons_hpmax = rng.nextInt(49, 56);
-                mons_hp = mons_hpmax;
-                mons_ad = rng.nextInt(44, 49);
+                monsHpMax = rng.nextInt(49, 56);
+                monsHp = monsHpMax;
+                monsDamage = rng.nextInt(44, 49);
             }
          }
          //Xp
-         mons_xp = mons_hpmax + mons_ad;
+         monsXp = monsHpMax + monsDamage;
 
-         System.out.println("Surge um monstro, o "+mons_chose+
-                            "\n[Nvl: "+mons_nivel+"]"+
-                            "\n[Vida: "+mons_hp+"/"+mons_hpmax+"]"+
-                            "\n[Dano: "+mons_ad+"]\n");
+         System.out.println("Surge um monstro, o "+monsChoose+" [Nvl: "+monsNivel+"]"+
+                            "\n[Vida: "+monsHp+"/"+monsHpMax+"]"+
+                            "\n[Dano: "+monsDamage+"]\n");
     }          
 //________________________________________________________________________________________________           
     public void encontro() {
@@ -126,9 +126,9 @@ public class Sistema {
             System.out.println("|3 - Swap  |  Run - 4| [Hab2: "+role.hab2+"]");
             System.out.println("|--------------------| [Hab3: "+role.hab3+"]");
             System.out.print("\n> ");
-            opc_encontro = scan.nextInt();
+            opcEncontro = scan.nextInt();
               
-              switch (opc_encontro) {
+              switch (opcEncontro) {
                  case 1:
                     fight();
                     monsAlive = false;
@@ -155,7 +155,7 @@ public class Sistema {
 //________________________________________________________________________________________________
     public void fight() {
 
-        while(opc_fight) {
+        while(opcFight) {
             System.out.println("\n|--------------------------------------|");
             System.out.format(" 1 - %s ", role.hab1Name);
             System.out.format("| %s - 2", role.hab2Name);
@@ -164,63 +164,62 @@ public class Sistema {
             System.out.format("| Back - 4");
             System.out.println("\n|--------------------------------------|");
             System.out.print("\n> ");
-            opc_hab = scan.nextInt();
+            opcHab = scan.nextInt();
 
-            switch (opc_hab) {
+            switch (opcHab) {
                 case 1:
-                    mons_hp -= role.hab1;
-                    System.out.println("Você machucou o monstro.\n"+mons_hp+"/"+mons_hpmax+"\n");
-                    if (mons_hp <= 0) {
-                        opc_fight = false;
+                    monsHp -= role.hab1;
+                    System.out.println("Você machucou o monstro.\n"+monsHp+"/"+monsHpMax+"\n");
+                    if (monsHp <= 0) {
+                        opcFight = false;
                     }
                     break;
                 case 2:
-                    mons_hp -= role.hab2;
-                    System.out.println("Você machucou o monstro.\n"+mons_hp+"/"+mons_hpmax+"\n");
-                    if (mons_hp <= 0) {
-                        opc_fight = false;
+                    monsHp -= role.hab2;
+                    System.out.println("Você machucou o monstro.\n"+monsHp+"/"+monsHpMax+"\n");
+                    if (monsHp <= 0) {
+                        opcFight = false;
                     }
                     break;
                 case 3:
-                    mons_hp -= role.hab3;
-                    System.out.println("Você machucou o monstro.\n"+mons_hp+"/"+mons_hpmax+"\n");
-                    if (mons_hp <= 0) {
-                        opc_fight = false;
+                    monsHp -= role.hab3;
+                    System.out.println("Você machucou o monstro.\n"+monsHp+"/"+monsHpMax+"\n");
+                    if (monsHp <= 0) {
+                        opcFight = false;
                     }
                     break;
                 default:
                     System.out.println("Opção inválida");
             }
 
-            if (mons_hp > 0 && role.hp > 0) {
-                role.hp -= mons_ad;
+            if (monsHp > 0 && role.hp > 0) {
+                role.hp -= monsDamage;
                 System.out.println("O monstro te atacou");
                 System.out.println(role.hp+"/"+role.hpMax+"\n");
-                if (role.hp <= 0 && mons_hp > 0) {
+                if (role.hp <= 0 && monsHp > 0) {
                     break;
                 }
             }
 
             FimBatalha();
-            
 
         } 
     }
 //________________________________________________________________________________________________
     public void FimBatalha() {
-        if (role.hp <= 0 && mons_hp > 0)  {
+        if (role.hp <= 0 && monsHp > 0)  {
             role.hp = 0;
             System.out.println("Você foi derrotado. Eu tinha grandes esperanças em você, que decepção!");
-            System.out.println("[Hp: "+role.hp+"/"+role.hpMax+"] - [Mons. Hp: "+mons_hp+"/"+mons_hpmax+"]");
+            System.out.println("[Hp: "+role.hp+"/"+role.hpMax+"] - [Mons. Hp: "+monsHp+"/"+monsHpMax+"]");
         }             
-        else if (mons_hp <= 0 && role.hp > 0) {
-            mons_hp = 0;
+        else if (monsHp <= 0 && role.hp > 0) {
+            monsHp = 0;
             System.out.println("Parabéns, você derrotou o monstro.");
-            System.out.println("[Hp: "+role.hp+"/"+role.hpMax+"] - [Mons. Hp: "+mons_hp+"/"+mons_hpmax+"]");
-            System.out.println("Xp recebida: "+mons_xp);
-            role.xp += mons_xp;
-        }
-            }
+            System.out.println("[Hp: "+role.hp+"/"+role.hpMax+"] - [Mons. Hp: "+monsHp+"/"+monsHpMax+"]");
+            System.out.println("Xp recebida: "+monsXp);
+            role.xp += monsXp;
+        } 
+    }
 //________________________________________________________________________________________________
     public void bag() {
         
@@ -228,7 +227,7 @@ public class Sistema {
 //________________________________________________________________________________________________
     public void swap() {
          
-    }
+    } 
 //________________________________________________________________________________________________
     public void run() {
 
@@ -269,7 +268,7 @@ IDEIAS:
 ---------------------------------|
 TIRAR TEMPORARIAMENTE:
 - por ora, tirar melle de "arqueiro"
-- escolher 1 aliado 
+- escolher 1 aliado  
 
 ________________________________________
 
