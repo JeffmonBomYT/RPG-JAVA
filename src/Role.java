@@ -1,9 +1,7 @@
-import java.util.Random;
 import java.util.Scanner;
 
 public class Role {
     Scanner scan = new Scanner(System.in);
-    Random rng = new Random();
 
     String classe, nome;
     int hp;

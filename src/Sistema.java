@@ -47,63 +47,63 @@ public class Sistema {
          monsChoose = lista_mons[rng.nextInt(lista_mons.length)];         
 
         switch (monsChoose) {
-            case "Slime" -> monsNivel = rng.nextInt(1, 2);
-            case "Esqueleto" -> monsNivel = rng.nextInt(2,4);
-            case "Orc" -> monsNivel = rng.nextInt(4, 6);
-            case "Coelho assasino" -> monsNivel = rng.nextInt(1, 3);
-            case "Lobo" -> monsNivel = rng.nextInt(2, 5);
+            case "Slime" -> monsNivel = 1 + rng.nextInt(2);
+            case "Esqueleto" -> monsNivel = 1 + rng.nextInt(4);
+            case "Orc" -> monsNivel = 1 + rng.nextInt(6);
+            case "Coelho assasino" -> monsNivel = 1 + rng.nextInt(3);
+            case "Lobo" -> monsNivel = 1 + rng.nextInt(5);
         } 
 
         switch (monsNivel) {
             case 1 -> {
-                monsHpMax = rng.nextInt(1, 7);
+                monsHpMax = 1 + rng.nextInt(7);
                 monsHp = monsHpMax;
-                monsDamage = rng.nextInt(1, 5);
+                monsDamage = 1 + rng.nextInt(5);
             }
             case 2 -> {
-                monsHpMax = rng.nextInt(6, 11);
+                monsHpMax = 1 + rng.nextInt(11);
                 monsHp = monsHpMax;
-                monsDamage = rng.nextInt(4, 10);
+                monsDamage = 1 + rng.nextInt(10);
             }
             case 3 -> {
-                monsHpMax = rng.nextInt(10, 15);
+                monsHpMax = 1 + rng.nextInt(15);
                 monsHp = monsHpMax;
-                monsDamage = rng.nextInt(9, 13);
+                monsDamage = 1 + rng.nextInt(13);
             }
             case 4 -> {
-                monsHpMax = rng.nextInt(14, 20);
+                monsHpMax = 1 + rng.nextInt(20);
                 monsHp = monsHpMax;
-                monsDamage = rng.nextInt(12, 17);
+                monsDamage = 1 + rng.nextInt(17);
             }
             case 5 -> {
-                monsHpMax = rng.nextInt(19, 25);
+                monsHpMax = 1 + rng.nextInt(25);
                 monsHp = monsHpMax;
-                monsDamage = rng.nextInt(16, 22);
+                monsDamage = 1 + rng.nextInt(22);
             }
             case 6 -> {
-                monsHpMax = rng.nextInt(24, 30);
+                monsHpMax = 1 + rng.nextInt(30);
                 monsHp = monsHpMax;
-                monsDamage = rng.nextInt(21, 29);
+                monsDamage = 1 + rng.nextInt(29);
             }
             case 7 -> {
-                monsHpMax = rng.nextInt(29, 36);
+                monsHpMax = 1 + rng.nextInt(36);
                 monsHp = monsHpMax;
-                monsDamage = rng.nextInt(28, 33);
+                monsDamage = 1 + rng.nextInt(33);
             }
             case 8 -> {
-                monsHpMax = rng.nextInt(35, 42);
+                monsHpMax = 1 + rng.nextInt(42);
                 monsHp = monsHpMax;
-                monsDamage = rng.nextInt(32, 40);
+                monsDamage = 1 + rng.nextInt(40);
             }
             case 9 -> {
-                monsHpMax = rng.nextInt(41, 50);
+                monsHpMax = 1 + rng.nextInt(50);
                 monsHp = monsHpMax;
-                monsDamage = rng.nextInt(39, 45);
+                monsDamage = 1 + rng.nextInt(45);
             }
             case 10 -> {
-                monsHpMax = rng.nextInt(49, 56);
+                monsHpMax = 1 + rng.nextInt(56);
                 monsHp = monsHpMax;
-                monsDamage = rng.nextInt(44, 49);
+                monsDamage = 1 + rng.nextInt(49);
             }
          }
          
