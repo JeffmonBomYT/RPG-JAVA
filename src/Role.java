@@ -103,9 +103,4 @@ public class Role {
     Implementar um sistema que faça com que seja atribuído por nivel de personagem:
 XpMax e fazer com que se Xp chegar a XpMax almentar o nivel do jogador e atribuir um 
 novo valor (talvez baseado em algum calculo) à XpMax
-
-
-
-
-
 */
