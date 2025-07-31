@@ -3,7 +3,10 @@ import java.util.Scanner;
 public class Story {
     Scanner scan = new Scanner(System.in);
 
-        Role role;
+    Role role;
+    public Story(Role role) {
+        this.role = role;
+    }
 //---------------------------------------------------------------
     public void opening() {
         System.out.println("[GENERIC HERO] (T-RPG)");
@@ -39,7 +42,7 @@ public class Story {
         System.out.println("    O soldado te apressa para que se levante e se prepare para a batalha que já houvera se iniciado.");
 
         System.out.println("Mecânicas: ");
-        System.out.println("Você utiliza de comandos pré-determinados com o teclado,digitando sua intenção e precionando [Enter] para enviar o comando. vamos à prática");
+        System.out.println("Você utiliza de comandos pré-determinados com o teclado,digitando sua intenção e precionando [Enter] para enviar o comando. enfim, vamos à prática");
     
     
     }
