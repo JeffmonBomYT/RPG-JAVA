@@ -1,17 +1,18 @@
-//import java.util.Scanner;
-
 public class Main {
-    public static void main(String[] args) {
-        //Scanner scan = new Scanner(System.in); 
+    public static void main(String[] args) throws Exception {
         Role role = new Role();
         Sistema sis = new Sistema(role);
-      
-        role.escolherClasse(); 
-        sis.gerar_criatura();   
-        sis.encontro();  
-        sis.fight();
-        
+        Story his = new Story();
+
+        his.introduction();
+        role.escolherClasse();
+        sis.gerarCriatura();
+        sis.meeting();
+
         System.out.println("Fim do teste"); 
- 
     }
-}
+} 
+/*
+ 
+extra de dar as habilidades baseado no nivel
+ */
