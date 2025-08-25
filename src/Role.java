@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Role {
     Scanner scan = new Scanner(System.in);
-    
+
     public String classe, name;
     public int hp;
     public int hpMax;
@@ -30,6 +30,8 @@ public class Role {
                 case 1:
                     classe = "Cavaleiro";
                     nivel = 0;
+                    xp = 0;
+                    xpMax = 50;
                     hpMax = 20;
                     hp = hpMax;
                     hab1 = 10;
@@ -42,6 +44,8 @@ public class Role {
                 case 2:
                     classe = "Mago";
                     nivel = 0;
+                    xp = 0;
+                    xpMax = 30;
                     hpMax = 12;
                     hp = hpMax;
                     hab1 = 6;
@@ -54,6 +58,8 @@ public class Role {
                 case 3:
                     classe = "Arqueiro";
                     nivel = 0;
+                    xp = 0;
+                    xpMax = 40;
                     hpMax = 16;
                     hp = hpMax;
                     hab1 = 9;
@@ -86,8 +92,30 @@ public class Role {
         System.out.println(" [Hab2: "+hab2+"]");
         System.out.println(" [Hab3: "+hab3+"]");
         System.out.println("|-------------------|\n");
+
+        ZaWardo();
     }
-//----------------------------------------------
+//--------------------------------------------------------------
+    public void ZaWardo() {
+        try {
+            Thread.sleep(1000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+//--------------------------------------------------------------
+    public void verificarXP() {
+        if (xp >= xpMax) {
+            System.out.println("Parabéns, você subiu de nivel! "+nivel+" -> "+(nivel+1));     
+            nivel++;
+            xpMax += 15;
+        }
+    }
+//--------------------------------------------------------------
+
+//--------------------------------------------------------------
+
+//--------------------------------------------------------------
     
 
 }

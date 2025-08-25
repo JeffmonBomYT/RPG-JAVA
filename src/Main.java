@@ -4,12 +4,18 @@ public class Main {
         Sistema sis = new Sistema(role);
         Story his = new Story(role);
 
+        his.opening();
         his.introduction();
-        role.escolherClasse();
-        sis.gerarCriatura(); 
+        sis.gerarCriatura();
         sis.meeting();
+        sis.gerarCriatura();
+        sis.meeting();
+        sis.gerarCriatura();
+        sis.meeting();
+        
 
-        System.out.println("Fim do teste"); 
+
+        System.out.println("Fim do teste");
     }
 } 
 /*

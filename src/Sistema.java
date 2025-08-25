@@ -1,9 +1,9 @@
 import java.util.ArrayList;
-import java.util.Random;
+import java.util.Random; 
 import java.util.Scanner;
 
 public class Sistema {
-    Scanner scan = new Scanner(System.in);
+    Scanner scan = new Scanner(System.in); 
     Random rng = new Random();
 
     Role role;
@@ -83,7 +83,7 @@ public class Sistema {
          
         monsXp = monsHpMax + monsDamage; //Xp
 
-        System.out.println("Surge um monstro, o "+monsChoice+" [Nvl: "+monsNivel+"]"+
+        System.out.println("\nSurge um monstro, o "+monsChoice+" [Nvl: "+monsNivel+"]"+
                         "\n[Vida: "+monsHp+"/"+monsHpMax+"]"+
                         "\n[Dano: "+monsDamage+"]\n");
     }       
@@ -170,7 +170,7 @@ public class Sistema {
             System.out.println("Parabéns, você derrotou o monstro.");
             System.out.println("[Hp: "+role.hp+"/"+role.hpMax+"] - [Mons. Hp: "+monsHp+"/"+monsHpMax+"]");
             role.xp += monsXp;
-            System.out.println("Xp recebida: "+monsXp+" | [Seu Xp: "+role.xp+"]");
+            System.out.println("Xp recebida: "+monsXp+" | [Seu Xp: "+role.xp+"/"+role.xpMax+"]");
         }
     }   
     //------------------------------------------------------------------------------------------------
@@ -227,7 +227,7 @@ public class Sistema {
         }
     }
 //------------------------------------------------------------------------------------------------
-
+    
 //------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------
