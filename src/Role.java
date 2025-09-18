@@ -59,7 +59,7 @@ public class Role {
                     classe = "Arqueiro";
                     nivel = 0;
                     xp = 0;
-                    xpMax = 4;
+                    xpMax = 40;  
                     hpMax = 16;
                     hp = hpMax;
                     hab1 = 9;
@@ -104,15 +104,17 @@ public class Role {
         }
     }
 //--------------------------------------------------------------
-    public void verificarNivel() {
+    public void verificarXP() {
         if (xp >= xpMax) {
-            System.out.println("Parabéns, você subiu de nivel! "+nivel+" -> "+(nivel+1));     
+            int xpTemp = Math.abs(xp - xpMax);
+            System.out.println("\nParabéns, você subiu de nivel! "+nivel+" -> "+(nivel+1));     
             nivel++;
             xpMax += 15;
+            xp = xpTemp;
         }
     }
 //--------------------------------------------------------------
-
+    
 //--------------------------------------------------------------
 
 //--------------------------------------------------------------

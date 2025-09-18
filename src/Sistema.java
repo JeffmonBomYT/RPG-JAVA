@@ -19,15 +19,15 @@ public class Sistema {
     public void gerarCriatura() {
         String[] lista_mons = {"Slime", "Esqueleto", "Orc", "Coelho assasino", "Lobo"};
         monsChoice = lista_mons[rng.nextInt(lista_mons.length)];         
-
-        switch (monsChoice) {
-            case "Slime" -> monsNivel = 1 + rng.nextInt(2);
-            case "Esqueleto" -> monsNivel = 1 + rng.nextInt(4);
-            case "Orc" -> monsNivel = 1 + rng.nextInt(6);
-            case "Coelho assasino" -> monsNivel = 1 + rng.nextInt(3);
-            case "Lobo" -> monsNivel = 1 + rng.nextInt(5);
+//------
+         switch (monsChoice) {
+            case "Slime" -> monsterLevel();
+            case "Esqueleto" -> monsterLevel();
+            case "Orc" -> monsterLevel();
+            case "Coelho assasino" -> monsterLevel();
+            case "Lobo" -> monsterLevel();
         } 
-
+//------
         switch (monsNivel) {
             case 1 -> {
                 monsHpMax = 1 + rng.nextInt(7);
@@ -82,7 +82,7 @@ public class Sistema {
          }
          
         monsXp = monsHpMax + monsDamage; //Xp
-
+        System.out.println("---------------------------");
         System.out.println("\nSurge um monstro, o "+monsChoice+" [Nvl: "+monsNivel+"]"+
                         "\n[Vida: "+monsHp+"/"+monsHpMax+"]"+
                         "\n[Dano: "+monsDamage+"]\n");
@@ -171,9 +171,10 @@ public class Sistema {
             System.out.println("[Hp: "+role.hp+"/"+role.hpMax+"] - [Mons. Hp: "+monsHp+"/"+monsHpMax+"]");
             role.xp += monsXp;
             System.out.println("Xp recebida: "+monsXp+" | [Seu Xp: "+role.xp+"/"+role.xpMax+"]");
+            role.verificarXP();
         }
     }   
-    //------------------------------------------------------------------------------------------------
+    //---------------------------------------------------------------------------------------------
     public void bag() {
         ArrayList<String> bolsa = new ArrayList<>();
         System.out.println("Bolsa: \n");
@@ -227,7 +228,17 @@ public class Sistema {
         }
     }
 //------------------------------------------------------------------------------------------------
-    
+    private void monsterLevel() {
+        if (role.nivel >= 0 && role.nivel <= 5) {
+            monsNivel = 1 + rng.nextInt(4);
+        }
+        else if (role.nivel >= 6 && role.nivel <= 12) {
+            monsNivel = 4 + rng.nextInt(10);
+        }
+        else if (role.nivel >= 13 && role.nivel <= 17) {
+            monsNivel = 9 + rng.nextInt(17);
+        }
+    }
 //------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------
@@ -272,18 +283,18 @@ TIRAR TEMPORARIAMENTE:
 ________________________________________
 
 INTERFACE DE ENCONTRO
-System.out.println("|----------------|");
-System.out.println("|  Fight     Bag |");
-System.out.println("|                |");
-System.out.println("|  Swap      Run |");
-System.out.println("|----------------|");
+|----------------|
+|  Fight     Bag |
+|                |
+|  Swap      Run |
+|----------------|
 
-INTERCADE DE LUTA
-System.out.println("|----------------|");
-System.out.println("|  Hab1     Hab2 |");
-System.out.println("|                |");
-System.out.println("|  Hab3     Back |");
-System.out.println("|----------------|");
+INTERFADE DE LUTA
+|----------------|
+|  Hab1     Hab2 |
+|                |
+|  Hab3     Back |
+|----------------|
 
 //MAGO
 mago_hpmax = 12;

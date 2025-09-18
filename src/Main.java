@@ -13,8 +13,6 @@ public class Main {
         sis.gerarCriatura();
         sis.meeting();
         
-
-
         System.out.println("Fim do teste");
     }
 } 
