@@ -76,8 +76,8 @@ public class Sistema {
          }
          
         monsXp = monsHpMax + monsDamage; //Xp
-        System.out.println("---------------------------");
-        System.out.println("\nSurge um monstro, o "+monsChoice+" [Nvl: "+monsNivel+"]"+
+        System.out.println("\n---------------------------");
+        System.out.println("Surge um monstro, o "+monsChoice+" [Nvl: "+monsNivel+"]"+
                         "\n[Vida: "+monsHp+"/"+monsHpMax+"]"+
                         "\n[Dano: "+monsDamage+"]\n");
     }       

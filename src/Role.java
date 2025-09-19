@@ -87,7 +87,7 @@ public class Role {
         System.out.println("\n|-------------------|");
         System.out.println(" [Classe: "+classe+"]");
         System.out.println(" [Hp: "+hp+"/"+hpMax+"]");
-        System.out.println(" [Xp: "+xpMax+"]");
+        System.out.println(" [Xp: "+xp+"/"+xpMax+"]");
         System.out.println(" [Hab1: "+hab1+"]");
         System.out.println(" [Hab2: "+hab2+"]");
         System.out.println(" [Hab3: "+hab3+"]");
@@ -107,10 +107,11 @@ public class Role {
     public void verificarXP() {
         if (xp >= xpMax) {
             int xpTemp = Math.abs(xp - xpMax);
-            System.out.println("\nParabéns, você subiu de nivel! "+nivel+" -> "+(nivel+1));     
+            System.out.println("\nParabéns, você subiu de nivel! "+nivel+" -> "+(nivel+1));
             nivel++;
             xpMax += 15;
             xp = xpTemp;
+            System.out.println("[Seu Xp: "+xp+"/"+xpMax+"]");
         }
     }
 //--------------------------------------------------------------
