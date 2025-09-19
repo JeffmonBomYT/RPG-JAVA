@@ -11,10 +11,10 @@ public class Role {
     public int hab1, hab2, hab3;
     public String hab1Name, hab2Name, hab3Name;
 
-    private int opcSelectClass;
-    private String opcStatus;
 //=================================================
     public void escolherClasse() {
+        String opcStatus;
+        int opcSelectClass;
         do {
             System.out.println("\n|----------------------|");
             System.out.println("|  Escolha sua classe  |");

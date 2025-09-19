@@ -13,20 +13,14 @@ public class Sistema {
 
 //------------------------------------------------------------------------------------------------
     private int monsNivel, monsHp, monsHpMax, monsXp, monsDamage;
-    private String monsChoice;
-    private int opcAbility, opcMeeting, opcBackBag;   
 //------------------------------------------------------------------------------------------------
     public void gerarCriatura() {
         String[] lista_mons = {"Slime", "Esqueleto", "Orc", "Coelho assasino", "Lobo"};
-        monsChoice = lista_mons[rng.nextInt(lista_mons.length)];         
+        String monsChoice = lista_mons[rng.nextInt(lista_mons.length)];
 //------
          switch (monsChoice) {
-            case "Slime" -> monsterLevel();
-            case "Esqueleto" -> monsterLevel();
-            case "Orc" -> monsterLevel();
-            case "Coelho assasino" -> monsterLevel();
-            case "Lobo" -> monsterLevel();
-        } 
+            case "Slime", "Esqueleto", "Orc", "Coelho assasino", "Lobo" -> monsterLevel();
+         }
 //------
         switch (monsNivel) {
             case 1 -> {
@@ -89,6 +83,7 @@ public class Sistema {
     }       
 //------------------------------------------------------------------------------------------------
     public void meeting() {
+        int opcMeeting;
             System.out.println("Seu turno!");
             System.out.println("|--------------------| [Hp: "+role.hp+"/"+role.hpMax+"]");
             System.out.println("|1 - Fight |  Bag - 3| [Xp: "+role.xp+"/"+role.xpMax+"]");
@@ -103,7 +98,7 @@ public class Sistema {
                     fight();
                     break;
                 case 2:
-                    System.out.println("Sistema não implementado");
+                    swap();
                     break;
                 case 3:
                     bag();
@@ -119,6 +114,7 @@ public class Sistema {
     }
 //------------------------------------------------------------------------------------------------
     public void fight() {
+        int opcAbility;
         System.out.println("|--------------------------------------|");
         System.out.format("| 1 - %s ", role.hab1Name);
         System.out.format("| %s - 2", role.hab2Name);
@@ -176,26 +172,28 @@ public class Sistema {
     }   
     //---------------------------------------------------------------------------------------------
     public void bag() {
+        int opcBackBag;
         ArrayList<String> bolsa = new ArrayList<>();
         System.out.println("Bolsa: \n");
         bolsa.add("Poção de vida");
         bolsa.add("Poção de vida");
         bolsa.add("Poção de vida");
-        if (role.classe.equals("Arqueiro")) {
-            bolsa.add("Arco");
-            bolsa.add("32 Flechas");
-            bolsa.add("Adaga");
-        }
-        else if (role.classe.equals("Cavaleiro")) {
-            bolsa.add("Espada Larga");
-            bolsa.add("Armadura de couro");
-            bolsa.add("Baralho de cartas");
-
-        }
-        else if (role.classe.equals("Mago")) {
-            bolsa.add("Cajado");
-            bolsa.add("Robe de mago");
-            bolsa.add("Amuleto de bruxa");
+        switch (role.classe) {
+            case "Arqueiro" -> {
+                bolsa.add("Arco");
+                bolsa.add("32 Flechas");
+                bolsa.add("Adaga");
+            }
+            case "Cavaleiro" -> {
+                bolsa.add("Espada Larga");
+                bolsa.add("Armadura de couro");
+                bolsa.add("Baralho de cartas");
+            }
+            case "Mago" -> {
+                bolsa.add("Cajado");
+                bolsa.add("Robe de mago");
+                bolsa.add("Amuleto de bruxa");
+            }
         }
 
         for (String itemNaBolsa : bolsa) {

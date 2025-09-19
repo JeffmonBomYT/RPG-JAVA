@@ -1,5 +1,5 @@
 public class Main {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         Role role = new Role();
         Sistema sis = new Sistema(role);
         Story his = new Story(role);
